@@ -10,6 +10,8 @@ public class JDBCCreateTables {
 	static String DB_URL = null;
 	static final String Username = "David";
 	static final String Password = "pass";
+	
+	//Testing water
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
