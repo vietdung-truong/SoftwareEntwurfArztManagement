@@ -14,7 +14,8 @@ public class JDBCCreateTables {
 	//Testing water
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub lskdfjlksjdvhlk j
+		
 
 		Connection conn = null;
 		Statement stmt = null;
