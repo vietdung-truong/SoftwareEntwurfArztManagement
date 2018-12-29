@@ -18,7 +18,7 @@ public class JDBCCreateDatabase {
 		try {
 			Class.forName(JDBC_DRIVER);
 			
-			//Connecting here
+			//Here connecting 
 			System.out.println("Getting connection...");
 			conn = DriverManager.getConnection(DB_URL, Username, Password);
 			System.out.println("Connection established");
