@@ -5,10 +5,10 @@ import java.util.*;
 
 public class JDBCCreateDatabase {
 
-	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
-	static final String DB_URL = "jdbc:mysql://localhost:3306/";
-	static final String Username = "David";
-	static final String Password = "pass";
+	static final String JDBC_DRIVER = "org.h2.Driver";  
+	static final String DB_URL = "jdbc:h2:~/test";
+	static final String Username = "sa";
+	static final String Password = "";
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
