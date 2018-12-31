@@ -5,11 +5,11 @@ import java.util.*;
 
 public class JDBCCreateTables {
 
-	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+	static final String JDBC_DRIVER = "org.h2.Driver";
 	static String Database = null;
-	static String DB_URL = null;
-	static final String Username = "David";
-	static final String Password = "pass";
+	static String DB_URL = "jdbc:h2:~/softwareEntwurfTest";
+	static final String Username = "sa";
+	static final String Password = "";
 	
 	//Testing water
 
@@ -29,7 +29,7 @@ public class JDBCCreateTables {
 			Database = reader.nextLine(); // Scans the next token of the input as an String.
 			// once finished reading the input
 			reader.close();
-			DB_URL = String.format("jdbc:mysql://localhost:3306/%s", Database);
+			DB_URL = String.format(DB_URL, Database);
 			System.out.println("Getting connection...");
 			conn = DriverManager.getConnection(DB_URL, Username, Password);
 			System.out.println("Connection established");
