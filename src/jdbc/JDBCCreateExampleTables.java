@@ -3,7 +3,7 @@ package jdbc;
 import java.sql.*;
 import java.util.*;
 
-public class JDBCCreateTables {
+public class JDBCCreateExampleTables {
 
 	static final String JDBC_DRIVER = "org.h2.Driver";
 	static String Database = null;
@@ -14,7 +14,7 @@ public class JDBCCreateTables {
 	//Testing water
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub lskdfjlksjdvhlk j
+		// TODO Auto-generated method stub
 		
 
 		Connection conn = null;
@@ -23,12 +23,6 @@ public class JDBCCreateTables {
 			Class.forName(JDBC_DRIVER);
 
 			// Connecting here
-			Scanner reader = new Scanner(System.in); // Reading from System.in
-			System.out.println("Tables are going to be created...");
-			System.out.println("Please enter the name of the Database you want to add the tables into: ");
-			Database = reader.nextLine(); // Scans the next token of the input as an String.
-			// once finished reading the input
-			reader.close();
 			DB_URL = String.format(DB_URL, Database);
 			System.out.println("Getting connection...");
 			conn = DriverManager.getConnection(DB_URL, Username, Password);
@@ -38,16 +32,28 @@ public class JDBCCreateTables {
 			System.out.println("Establishing Statement...");
 			stmt = conn.createStatement();
 			System.out.println("Statement established");
-			System.out.println("Creating a Table...");
-			String sql = "CREATE TABLE PATIENTEN (ID INTEGER not NULL, Vorname VARCHAR(20), "
-							+ "Nachname VARCHAR(20), Anschrift VARCHAR(255), Telefon INTEGER not NULL, "
-							+ "Email VARCHAR(255), Versicherungsnummer VARCHAR(30), PRIMARY KEY (ID))";
+			
+			//Hier wird die Tabelle erstellt
+			/*
+			 * System.out.println("Creating a Table..."); String sql =
+			 * "CREATE TABLE BEHANDLUNG (ID INTEGER not NULL, DATUM DATE, " +
+			 * "LEISTUNGEN VARCHAR(255), ARZT VARCHAR(20), PATIENT VARCHAR (20), " +
+			 * "BEHANDLUNGSART VARCHAR(20),  PRIMARY KEY (ID))"; stmt.executeUpdate(sql);
+			 * System.out.println("Table Behandlung has been created");
+			 */
+			
+			//Hier werden Beispiele hinzugefuegt
+			
+			System.out.println("Es werden 3 Beispiele hinzugefuegt...");
+			
+			String sql = "insert into behandlung ( arzt , patient , datum , leistungen , behandlungsart )"
+					+ "values "
+					+ "( 'Margaret Neuenhofer', 'Viet Dung Truong', to_date ('2019-01-01', 'yyyy-mm-dd'), 'Truongs HP wurde geheilt', 'Heilung'),"
+					+ "( 'Max  Mustermann', 'Sven Zielonka',to_date ('2019-01-02', 'yyyy-mm-dd'), 'Jaehrliche Kontrolle', 'Kontrolle'),"
+					+ "( 'John  Doe', 'Raphael Palombo',to_date ('2019-01-03', 'yyyy-mm-dd'), 'Erkaeltung', 'Heilung')";
 			stmt.executeUpdate(sql);
-			sql = "CREATE TABLE ARZT (ID INTEGER Not NULL, Vorname VARCHAR(20), Nachname VARCHAR(20), "
-							+ "Anschrift VARCHAR(255), IBAN VARCHAR(20), Telefon INTEGER not NULL, "
-							+ "LANR VARCHAR(9), PRIMARY KEY(ID))";
-			stmt.executeUpdate(sql);
-			System.out.println("Table Patienten and Arzt has been created");
+			
+			System.out.println("Beispiele David, Sven und Raphael hinzugefuegt.");
 
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
