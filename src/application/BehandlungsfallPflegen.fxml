@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane fx:id="bfallPflegenPane" prefHeight="557.0" prefWidth="754.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.BehandlungsfallPflegenController">
+   <children>
+      <Button layoutX="43.0" layoutY="22.0" mnemonicParsing="false" onAction="#loadBFallSuchen" prefHeight="64.0" prefWidth="161.0" text="Behandlungsfall suchen" />
+      <SplitPane dividerPositions="0.5" layoutY="100.0" orientation="VERTICAL" prefHeight="536.0" prefWidth="754.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="286.0" prefWidth="752.0">
+               <children>
+                  <GridPane layoutX="52.0" layoutY="34.0" prefHeight="197.0" prefWidth="686.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label prefHeight="17.0" prefWidth="240.0" text="Behandlungsfall ID: " />
+                        <Label prefHeight="17.0" prefWidth="240.0" text="Behandlungsfall Datum:" GridPane.rowIndex="1" />
+                        <Label prefHeight="17.0" prefWidth="240.0" text="LANR: " GridPane.rowIndex="2" />
+                        <Label prefHeight="17.0" prefWidth="240.0" text="Arzt Name: " GridPane.rowIndex="3" />
+                        <Label prefHeight="17.0" prefWidth="240.0" text="Patienten ID: " GridPane.rowIndex="4" />
+                        <Label prefHeight="17.0" prefWidth="240.0" text="_" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label prefHeight="17.0" prefWidth="240.0" text="Patienten Name: " GridPane.rowIndex="5" />
+                        <Label prefHeight="17.0" prefWidth="240.0" text="_" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label prefHeight="17.0" prefWidth="240.0" text="_" GridPane.columnIndex="1" />
+                        <Label prefHeight="17.0" prefWidth="240.0" text="_" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label prefHeight="17.0" prefWidth="240.0" text="_" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label prefHeight="17.0" prefWidth="240.0" text="_" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                     </children>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="210.0" prefWidth="752.0" />
+        </items>
+      </SplitPane>
+      <Button fx:id="abortButton" layoutX="549.0" layoutY="22.0" mnemonicParsing="false" onAction="#loadPrevWindow" prefHeight="64.0" prefWidth="161.0" text="Abbrechen" />
+   </children>
+</AnchorPane>
