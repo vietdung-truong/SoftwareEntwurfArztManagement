@@ -25,6 +25,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
+import awk.entity.*;
+import awk.usecase.impl.*;
+
 
 public class BehandlungsfallPflegenController implements Initializable{
 
@@ -61,41 +64,40 @@ public class BehandlungsfallPflegenController implements Initializable{
 //		}
 		
 	@FXML
-    private TextField t_suchenachname;
+    private TextField t_behandlungsID;
     @FXML
-    private TextField t_suchevorname;   
+    private TextField t_datum;   
     @FXML
-    private TextField t_suchestr;   
+    private TextField t_arzt;   
     @FXML
-    private TextField t_suchenr;   
-    @FXML
-    private TextField t_sucheplz;   
-    @FXML
-    private TextField t_sucheort;
+    private TextField t_patient;   
     @FXML
     private Button b_abbrechen;
     
+    
+    // ----- Tabellen Inhalt ----------------------------------
+    
     @FXML
-    private TableView<Kundensuche_Kundendaten> tb_Namen;
+    private TableView<Behandlungsuche_Behandlungsdaten> tb_Namen;
     @FXML
-    private TableColumn<Kundensuche_Kundendaten, String> tabc_nachname;
+    private TableColumn<Behandlungsuche_Behandlungsdaten, String> tabc_nachname;
     @FXML
-    private TableColumn<Kundensuche_Kundendaten, String> tabc_vorname;
+    private TableColumn<Behandlungsuche_Behandlungsdaten, String> tabc_vorname;
     @FXML
-    private TableColumn<Kundensuche_Kundendaten, String> tabc_str;
+    private TableColumn<Behandlungsuche_Behandlungsdaten, String> tabc_str;
     @FXML
-    private TableColumn<Kundensuche_Kundendaten, String> tabc_nr;
+    private TableColumn<Behandlungsuche_Behandlungsdaten, String> tabc_nr;
     @FXML
-    private TableColumn<Kundensuche_Kundendaten, String> tabc_plz;
+    private TableColumn<Behandlungsuche_Behandlungsdaten, String> tabc_plz;
     @FXML
-    private TableColumn<Kundensuche_Kundendaten, String> tabc_ort;
+    private TableColumn<Behandlungsuche_Behandlungsdaten, String> tabc_ort;
     @FXML
-    private TableColumn<Kundensuche_Kundendaten, String> tabc_geschlecht;
+    private TableColumn<Behandlungsuche_Behandlungsdaten, String> tabc_geschlecht;
     @FXML
-    private TableColumn<Kundensuche_Kundendaten, String> tabc_ustid;
+    private TableColumn<Behandlungsuche_Behandlungsdaten, String> tabc_ustid;
     
     
-    private ObservableList<Kundensuche_Kundendaten> kundendaten = FXCollections.observableArrayList();
+    private Behandlungsuche_Behandlungsdaten behandlung;
     
     private Hauptmenü screencontroller;
     
@@ -104,6 +106,8 @@ public class BehandlungsfallPflegenController implements Initializable{
     }
     
     public void initialize()  {
+    	
+    	t_behandlungsID.setText(behandlung.getNr());
     	
     	// erstellt Tabelle 
     	tabc_nachname.setCellValueFactory(cellData -> cellData.getValue().nachnameProperty());
@@ -118,51 +122,20 @@ public class BehandlungsfallPflegenController implements Initializable{
     	tb_Namen.setItems(show());
     }
 
-    public ObservableList<Kundensuche_Kundendaten> show() {
-    	return kundendaten;
+    public ObservableList<Behandlungsuche_Behandlungsdaten> show() {
+    	
+    	// hier Übertragen der Leistungen
+    	return behandlung.leistungen();
     }
     
-    public void suche() {
-    	
-    	IKundenverwaltungFactory kvFactory = new KundenverwaltungFactory();
-		IKundenSuchen kundenSuchen = kvFactory.getKundenSuchen();
-		
-		String nachname = t_suchenachname.getText();
-		String vorname 	= t_suchevorname.getText();
-		String str 		= t_suchestr.getText();
-		String nr 		= t_suchenr.getText();
-		String plz 		= t_sucheplz.getText();
-		String ort 		= t_sucheort.getText();
-		
-		Collection<KundeTO> kundenTO =  
-				kundenSuchen.kundenSuchenPerAttribut(
-							vorname, nachname,
-							str, nr, plz, ort);			
-		kundendaten.clear();	
-		Kundensuche_Kundendaten kundedaten;
-	    for (KundeTO kundeTO: kundenTO) {
-		   kundedaten = new Kundensuche_Kundendaten();
-		   kundedaten.setNachname(kundeTO.getNachname());
-		   kundedaten.setVorname(kundeTO.getVorname());
-		   kundedaten.setStr(kundeTO.getStr());
-		   kundedaten.setNr(kundeTO.getNr());
-		   kundedaten.setPlz(kundeTO.getPlz());
-		   kundedaten.setOrt(kundeTO.getOrt());
-		   if (kundeTO instanceof PrivatkundeTO )
-			   kundedaten.setGeschlecht( ((PrivatkundeTO) kundeTO).getGeschlecht());
-		   if (kundeTO instanceof GeschäftskundeTO )
-			   kundedaten.setUstid( ((GeschäftskundeTO) kundeTO).getUstID());	   
-		   
-		   kundendaten.add(kundedaten);
-	   }
-		   
-	
-    	System.out.println("Anzahl Einträge in Tabelle"+kundendaten.size());
-    	
+    
+    
+    public void setBehandlung(Behandlungsuche_Behandlungsdaten behandlung) {
+    	this.behandlung = behandlung; 
     }
     
     public void abbrechen() {
-    	screencontroller.anzeigen(Hauptmenü.KUNDENMENÜ);	    	
+    	screencontroller.anzeigen(Hauptmenü.MAINMENUE, false);	    	
     }
 	
 }

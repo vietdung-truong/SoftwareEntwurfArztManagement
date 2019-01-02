@@ -25,6 +25,9 @@ public class Hauptmenü extends Application {
 	
 	public Hauptmenü screenscontroller;
 	
+	private BehandlungsfallSuchenController ctrlbhfsuche;
+	BehandlungsfallPflegenController ctrlbhfpflege;
+	
 	@Override
 	public void start(Stage primaryStage) {
 		
@@ -55,14 +58,14 @@ public class Hauptmenü extends Application {
 			Parent bhfsuche_pane = (Parent)loader.load();
 			this.bhfsuche = new Scene(bhfsuche_pane,700,500);
 			this.bhfsuche.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			BehandlungsfallSuchenController ctrlbhfsuche = loader.getController();
+			ctrlbhfsuche = loader.getController();
 			ctrlbhfsuche.setScreenController(this);
 			
 			loader = new FXMLLoader(getClass().getResource("kundenverwaltung/bhfpflege.fxml"));
 			Parent bhfpflege_pane = (Parent) loader.load();
 			this.bhfpflege = new Scene(bhfpflege_pane,600,400);
 			this.bhfpflege.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			BehandlungsfallPflegenController ctrlbhfpflege = loader.getController();
+			ctrlbhfpflege = loader.getController();
 			ctrlbhfpflege.setScreenController(this);
 			
 			anzeigen(Hauptmenü.MAINMENUE);
@@ -73,14 +76,17 @@ public class Hauptmenü extends Application {
 	}
 	
 
-	public void anzeigen (String screen) {
+	public void anzeigen (String screen, Boolean auswahl) {
 		
 		switch (screen) {
 			case Hauptmenü.MAINMENUE: mainStage.setScene(mainmenü);
 				break;
 			case Hauptmenü.BHFSUCHE: mainStage.setScene(bhfsuche);
 				break;
-			case Hauptmenü.BHFPFLEGE: mainStage.setScene(bhfpflege);
+			case Hauptmenü.BHFPFLEGE: 
+				if (auswahl == true  )
+				ctrlbhfpflege.setKundendaten(ctrlbhfsuche.getBehandlung());
+				mainStage.setScene(bhfpflege);
 				break;
 		}
 		
