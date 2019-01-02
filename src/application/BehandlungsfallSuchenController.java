@@ -40,8 +40,9 @@ public class BehandlungsfallSuchenController implements Initializable {
 	@FXML
 	private TableColumn<Behandlungsuche_Behandlungsdaten, String> tabc_patient;
 
-	// --------- Variablen --------------------
+	// --------- Variablen ------------------------------------------------------------------------
 
+	
 	private ObservableList<Behandlungsuche_Behandlungsdaten> behandlungsdaten = FXCollections.observableArrayList();
 
 	private BehandlungTO behandlung; 

@@ -75,7 +75,7 @@ public class BehandlungsfallPflegenController implements Initializable{
     private Button b_abbrechen;
     
     
-    // ----- Tabellen Inhalt ----------------------------------
+    // ----- Tabellen Inhalt ----------------------------------------------------
     
     @FXML
     private TableView<Behandlungsuche_Behandlungsdaten> tb_Namen;

@@ -85,7 +85,7 @@ public class Hauptmenü extends Application {
 				break;
 			case Hauptmenü.BHFPFLEGE: 
 				if (auswahl == true  )
-				ctrlbhfpflege.setKundendaten(ctrlbhfsuche.getBehandlung());
+				ctrlbhfpflege.getBehandlung(ctrlbhfsuche.getBehandlung());
 				mainStage.setScene(bhfpflege);
 				break;
 		}
