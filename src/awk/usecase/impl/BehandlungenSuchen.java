@@ -1,14 +1,15 @@
 package awk.usecase.impl;
 import java.util.*;
 import awk.entity.*;
+import awk.usecases.IBehandlungenSuchen;
 
 
 public class BehandlungenSuchen implements IBehandlungenSuchen {
 
 	
-	public Set<BehandlungTO> sucheBehandlungenPerDatum (String datum) {
+	public Collection<BehandlungTO> sucheBehandlungenPerDatum (String datum) {
 		BehandlungManager behandlungManager = new BehandlungManager();
-		Set<BehandlungTO> behandlungen  = behandlungManager.nachBehandlungenSuchen(datum);
+		Collection<BehandlungTO> behandlungen  = behandlungManager.nachBehandlungenSuchen(datum);
 		return behandlungen;
 	}
 }

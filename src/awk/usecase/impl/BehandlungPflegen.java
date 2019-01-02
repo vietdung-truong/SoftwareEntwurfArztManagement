@@ -1,24 +1,43 @@
 package awk.usecase.impl;
 import java.util.*;
+
+import awk.datatypes.Behandlungsart;
 import awk.entity.*;
+import awk.entity.internal.Behandlung;
+import awk.usecase.impl.*;
 
 public class BehandlungPflegen {
 
 	
-	public void behandlungsdatenSpeichern() {
+	public void behandlungsdatenSpeichern(int behandlungsID, String datum, String leistungen, String arzt,String patient, String behandlungsart) {
+		 BehandlungManager manager = new BehandlungManager();
+		 Behandlungsart bh;
+		 // Überprüfung valider Eingabe
+		 if (behandlungsart == Behandlungsart.PRIVAT.toString()) {
+				 bh = Behandlungsart.PRIVAT;
+				 Behandlung behandlung = new Behandlung (behandlungsID,datum,leistungen,arzt,patient,bh);
+				 manager.BehandlungAnlegen(behandlung);
+		 }else if(behandlungsart == Behandlungsart.KASSE.toString()) {
+			 bh = Behandlungsart.KASSE;
+			 Behandlung behandlung = new Behandlung (behandlungsID,datum,leistungen,arzt,patient,bh);
+			 manager.BehandlungAnlegen(behandlung);
+		 }	 
 		
+		 
+		 
+		 
+		 
 	}
 	
-	public void behandlungsdatenAnlegen() {
-		
-	}
 	
-	public BehandlungTO behandlungsdatenLiefern() {
-		 BehandlungTO behandlung;
+	public Collection<BehandlungTO> behandlungsdatenLiefern(String datum) {
+		 BehandlungManager manager = new BehandlungManager();
+		 
+		 	Collection<BehandlungTO> behandlungen = manager.nachBehandlungenSuchen(datum);
 		
-			if (behandlung == null)
-				return (null);
+			if (behandlungen == null)
+				return null;
 			else
-				return behandlung;
+				return behandlungen;
 	}
 }
