@@ -2,6 +2,8 @@ package awk.usecase.impl;
 
 import awk.entity.internal.Behandlung;
 import persistence.internal.BehandlungDAO;
+import awk.entity.*;
+import awk.entity.*;
 
 public class BehandlungManager {
 

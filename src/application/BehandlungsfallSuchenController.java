@@ -45,7 +45,7 @@ public class BehandlungsfallSuchenController implements Initializable {
 	
 	private ObservableList<Behandlungsuche_Behandlungsdaten> behandlungsdaten = FXCollections.observableArrayList();
 
-	private BehandlungTO behandlung; 
+	private Behandlungsuche_Behandlungsdaten behandlung; 
 	
 	private Hauptmenü screencontroller;
 
@@ -91,7 +91,7 @@ public class BehandlungsfallSuchenController implements Initializable {
     	screencontroller.anzeigen(Hauptmenü.BHFPFLEGE, true);	    	
     }
 	
-	public BehandlungTO getBehandlung() {
+	public Behandlungsuche_Behandlungsdaten getBehandlung() {
     	return behandlung;    	
     }
 

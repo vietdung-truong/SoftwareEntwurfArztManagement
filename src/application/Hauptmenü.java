@@ -26,7 +26,7 @@ public class Hauptmenü extends Application {
 	public Hauptmenü screenscontroller;
 	
 	private BehandlungsfallSuchenController ctrlbhfsuche;
-	BehandlungsfallPflegenController ctrlbhfpflege;
+	private BehandlungsfallPflegenController ctrlbhfpflege;
 	
 	@Override
 	public void start(Stage primaryStage) {
@@ -85,7 +85,7 @@ public class Hauptmenü extends Application {
 				break;
 			case Hauptmenü.BHFPFLEGE: 
 				if (auswahl == true  )
-				ctrlbhfpflege.getBehandlung(ctrlbhfsuche.getBehandlung());
+				ctrlbhfpflege.setBehandlung(ctrlbhfsuche.getBehandlung());
 				mainStage.setScene(bhfpflege);
 				break;
 		}
