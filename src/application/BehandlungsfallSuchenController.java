@@ -82,6 +82,8 @@ public class BehandlungsfallSuchenController implements Initializable {
 			
 			behandlungsdaten.add(behandlungdaten);
 		}
+		
+		
 
 		System.out.println("Anzahl Einträge in Tabelle" + behandlungsdaten.size());
 
