@@ -3,24 +3,26 @@ package awk.usecase.impl;
 import awk.entity.internal.Behandlung;
 import persistence.internal.BehandlungDAO;
 
+import java.util.Collection;
+
+import awk.entity.*;
+import persistence.internal.*;
+import awk.entity.*;
+
 public class BehandlungManager {
 
-	public Behandlung nachBehandlungenSuchen (String datum) {
+	public Collection<BehandlungTO> nachBehandlungenSuchen (String datum) {
 		
-		BehandlungDAO BehandlungDAO = new BehandlungDAO();
-		awk.entity.BehandlungTO BehandlungTO = BehandlungDAO.getBehandlungen(datum);
-		
-		if (BehandlungTO != null)
-			return new Behandlung (BehandlungTO.getBehandlungsID(), BehandlungTO.getDatum(), BehandlungTO.getLeistungen(), BehandlungTO.getArzt(),BehandlungTO.getPatient(),BehandlungTO.getBehandlungsart());
-		else
-			return null;
+		BehandlungDAO dao = new BehandlungDAO();
+			return dao.getBehandlungen(datum);
+			
 	}
 	
-	public void BehandlungAnlegen(Behandlung Behandlung) {
-		
-		IBehandlungDAO BehandlungDAO = new BehandlungDAO();		
-		BehandlungTO BehandlungTO = new BehandlungTO(Behandlung.getDatum(), Behandlung.);
-		BehandlungDAO.speichereBehandlung(BehandlungTO);
+	public void BehandlungAnlegen(Behandlung behandlung) {
+		;
+		BehandlungDAO dao = new BehandlungDAO();	
+		BehandlungTO to = new BehandlungTO(behandlung.getBehandlungsID(), behandlung.getDatum(), behandlung.getLeistungen(), behandlung.getArzt(), behandlung.getPatient(), behandlung.getBehandlungsart().toString());
+		dao.updateBehandlung(to);
 		
 		
 	}

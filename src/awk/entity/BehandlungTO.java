@@ -7,12 +7,12 @@ import java.util.Set;
 public class BehandlungTO {
 	int behandlungsID;
 	String datum;
-	Set<String> leistungen = new HashSet<String>();
+	String leistungen;
 	String arzt;
 	String patient;
 	String behandlungsart;
 
-	public BehandlungTO(int behandlungsID, String datum, Set<String> leistungen, String arzt,String patient, String behandlungsart ) {
+	public BehandlungTO(int behandlungsID, String datum, String leistungen, String arzt,String patient, String behandlungsart ) {
 		this.behandlungsID = behandlungsID;
 		this.datum = datum;
 		this.leistungen = leistungen;
@@ -35,7 +35,7 @@ public class BehandlungTO {
 
 
 
-	public Set<String> getLeistungen() {
+	public String getLeistungen() {
 		return leistungen;
 	}
 
@@ -73,7 +73,7 @@ public class BehandlungTO {
 		this.datum = datum;
 	}
 
-	public void setLeistungen(Set<String> leistungen) {
+	public void setLeistungen(String leistungen) {
 		this.leistungen = leistungen;
 	}
 
@@ -85,6 +85,5 @@ public class BehandlungTO {
 		this.patient = patient;
 	}
 
-	public void setBehandlungsart(Behandlungsart behandlungsart) {
-	}
+	
 }

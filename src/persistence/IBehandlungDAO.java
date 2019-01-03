@@ -1,11 +1,10 @@
 package persistence;
 
-import java.util.ArrayList;
-
+import java.util.Collection;
 import awk.entity.BehandlungTO;
 
 public interface IBehandlungDAO {
 	public void updateBehandlung (BehandlungTO eintragTO);
-	public ArrayList<BehandlungTO> getBehandlungen(String datum);
+	public Collection<BehandlungTO> getBehandlungen(String datum);
 
 }
