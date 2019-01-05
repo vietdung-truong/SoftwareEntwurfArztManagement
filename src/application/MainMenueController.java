@@ -1,6 +1,6 @@
 package application;
 
-import application.Hauptmenü;
+import application.Hauptmenue;
 
 //import java.io.IOException;
 //import java.net.URL;
@@ -12,14 +12,14 @@ import application.Hauptmenü;
 
 public class MainMenueController {
 
-	    private Hauptmenü screencontroller;
+	    private Hauptmenue screencontroller;
 
-	    public void setScreenController (Hauptmenü screencontroller) {
+	    public void setScreenController (Hauptmenue screencontroller) {
 	    	this.screencontroller = screencontroller;
 	    }
 		
 		public void bFallAnzeigen() {
-	    	screencontroller.anzeigen(Hauptmenü.BHFPFLEGE);
+	    	screencontroller.anzeigen(Hauptmenue.BHFPFLEGE);
 	    	
 	    }
 

@@ -12,7 +12,7 @@ import application.BehandlungsfallSuchenController;
 import application.BehandlungsfallPflegenController;
 import application.MainMenueController;
 
-public class Hauptmenü extends Application {
+public class Hauptmenue extends Application {
 	
 	private Scene mainmenü;
 	private Scene bhfsuche;
@@ -24,7 +24,7 @@ public class Hauptmenü extends Application {
 	
 	private Stage mainStage;
 	
-	public Hauptmenü screenscontroller;
+	public Hauptmenue screenscontroller;
 	
 //	public MainMenueController ctrlmain;
 //	public BehandlungsfallPflegenController ctrlpflegen;
@@ -59,7 +59,7 @@ public class Hauptmenü extends Application {
 			BehandlungsfallSuchenController ctrlbhfsuche = loader.getController();
 			ctrlbhfsuche.setScreenController(this);
 			
-			anzeigen(Hauptmenü.MAINMENUE);
+			anzeigen(Hauptmenue.MAINMENUE);
 		
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -71,11 +71,11 @@ public class Hauptmenü extends Application {
 	{
 		
 		switch (screen) {
-			case Hauptmenü.MAINMENUE: mainStage.setScene(mainmenü);
+			case Hauptmenue.MAINMENUE: mainStage.setScene(mainmenü);
 				break;
-			case Hauptmenü.BHFSUCHE: mainStage.setScene(bhfsuche);
+			case Hauptmenue.BHFSUCHE: mainStage.setScene(bhfsuche);
 				break;
-			case Hauptmenü.BHFPFLEGE: mainStage.setScene(bhfpflege); 
+			case Hauptmenue.BHFPFLEGE: mainStage.setScene(bhfpflege); 
 				//ctrlbhfpflege.setBehandlung(ctrlbhfsuche.getBehandlung());
 				
 				break;

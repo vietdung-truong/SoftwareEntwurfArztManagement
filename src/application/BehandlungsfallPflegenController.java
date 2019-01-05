@@ -54,25 +54,26 @@ public class BehandlungsfallPflegenController{
 	    private Button b_abbrechen;
 	    
 
-		@FXML
-		private void loadBFallSuchen (ActionEvent event) throws IOException {
-			AnchorPane pane = FXMLLoader.load(getClass().getResource("BehandlungsfallSuchen.fxml"));
-			bfallPflegenPane.getChildren().setAll(pane);
-		}
+	/*
+	 * @FXML private void loadBFallSuchen (ActionEvent event) throws IOException {
+	 * AnchorPane pane =
+	 * FXMLLoader.load(getClass().getResource("BehandlungsfallSuchen.fxml"));
+	 * bfallPflegenPane.getChildren().setAll(pane); }
+	 */
+	    public void loadBFallSuchen() {
+	    	screencontroller.anzeigen(Hauptmenue.BHFSUCHE);
+	    }
 		
-		@FXML
-		private void loadPrevWindow (ActionEvent event) throws IOException {
-			Parent root;
-		    Stage stage;
-		    if (event.getSource() == abortButton) {
-		        stage = (Stage) bfallPflegenPane.getScene().getWindow();
-		        root = FXMLLoader.load(getClass().getResource("MainMenue.fxml"));
-		        Scene scene = new Scene(root, 800, 700);
-		        stage.setScene(scene);
-		        stage.show();
-		    }
-			
-		}
+	/* @FXML */
+	/*
+	 * private void loadPrevWindow (ActionEvent event) throws IOException { Parent
+	 * root; Stage stage; if (event.getSource() == abortButton) { stage = (Stage)
+	 * bfallPflegenPane.getScene().getWindow(); root =
+	 * FXMLLoader.load(getClass().getResource("MainMenue.fxml")); Scene scene = new
+	 * Scene(root, 800, 700); stage.setScene(scene); stage.show(); }
+	 * 
+	 * }
+	 */
 		
 
     
@@ -106,9 +107,9 @@ public class BehandlungsfallPflegenController{
     
     private Behandlungsuche_Behandlungsdaten behandlung;
     
-    private Hauptmenü screencontroller;
+    private Hauptmenue screencontroller;
     
-    public void setScreenController (Hauptmenü screencontroller) {
+    public void setScreenController (Hauptmenue screencontroller) {
     	this.screencontroller = screencontroller;
     }
     
@@ -142,7 +143,7 @@ public class BehandlungsfallPflegenController{
     }
     
     public void abbrechen() {
-    	screencontroller.anzeigen(Hauptmenü.MAINMENUE);	    	
+    	screencontroller.anzeigen(Hauptmenue.MAINMENUE);	    	
     }
 	
 }
