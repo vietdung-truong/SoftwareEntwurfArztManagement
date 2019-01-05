@@ -74,7 +74,7 @@ public class BehandlungsfallSuchenController {
 			behandlungdaten = new Behandlungsuche_Behandlungsdaten();
 			//get ID, Arzt, Patient-------------------------------------------------ändern
 			behandlungdaten.getBehandlungsID();
-			behandlungdaten.setVorname(BehandlungTO.getVorname());
+			behandlungdaten.
 			behandlungdaten.setStr(BehandlungTO.getStr());
 			
 			behandlungsdaten.add(behandlungdaten);
