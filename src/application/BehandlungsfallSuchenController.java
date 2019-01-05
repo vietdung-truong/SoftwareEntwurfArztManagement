@@ -30,13 +30,12 @@ public class BehandlungsfallSuchenController implements Initializable {
 	private TextField t_sucheDatum;
 
 	@FXML
-	private TableView bfallSuchergebnisse;
-	
-	//Klären--------------------------------------------------------------------------!!
-	//Was für ein Name soll die Variable darstellen?
-	//Was stellt die Variable tb_Behandlungen dar?
+	private Button b_behandlungenSuchen;
 	@FXML
-    private TableView<Behandlungsuche_Behandlungsdaten> tb_Namen;
+	private Button b_auswahl;;
+	@FXML
+	private Button b_abbrechen;
+	
 	@FXML
 	private TableView<Behandlungsuche_Behandlungsdaten> tb_Behandlungen;
 	@FXML
@@ -45,6 +44,7 @@ public class BehandlungsfallSuchenController implements Initializable {
 	private TableColumn<Behandlungsuche_Behandlungsdaten, String> tabc_arzt;
 	@FXML
 	private TableColumn<Behandlungsuche_Behandlungsdaten, String> tabc_patient;
+	
 
 	// --------- Variablen ------------------------------------------------------------------------
 
@@ -67,8 +67,7 @@ public class BehandlungsfallSuchenController implements Initializable {
     	tabc_behandlungsID.setCellValueFactory(cellData -> cellData.getValue().nachnameProperty());
     	tabc_arzt.setCellValueFactory(cellData -> cellData.getValue().vornameProperty()); 
     	tabc_patient.setCellValueFactory(cellData -> cellData.getValue().strProperty());
-    	
-    	tb_Namen.setItems(behandlungsdaten);
+    	tb_Behandlungen.setItems(behandlungsdaten);
 	}
 
 	public void suche() {
@@ -82,6 +81,7 @@ public class BehandlungsfallSuchenController implements Initializable {
 		Behandlungsuche_Behandlungsdaten behandlungdaten;
 		for (BehandlungTO BehandlungTO : behandlungenTO) {
 			behandlungdaten = new Behandlungsuche_Behandlungsdaten();
+			//get ID, Arzt, Patient-------------------------------------------------ändern
 			behandlungdaten.setNachname(BehandlungTO.getNachname());
 			behandlungdaten.setVorname(BehandlungTO.getVorname());
 			behandlungdaten.setStr(BehandlungTO.getStr());

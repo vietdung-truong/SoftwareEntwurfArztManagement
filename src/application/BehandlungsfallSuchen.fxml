@@ -10,16 +10,16 @@
 
 <AnchorPane fx:id="bfallSuchenPane" minHeight="400.0" minWidth="400.0" prefHeight="499.0" prefWidth="668.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.BehandlungsfallSuchenController">
    <children>
-      <Button layoutX="39.0" layoutY="40.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="129.0" text="Suchen" />
+      <Button layoutX="39.0" layoutY="40.0" mnemonicParsing="false" onAction="#suche" prefHeight="64.0" prefWidth="129.0" text="Suchen" />
       <TextField fx:id="t_sucheDatum" layoutX="54.0" layoutY="182.0" prefHeight="25.0" prefWidth="274.0" text="(dd.mm.yyyy) " />
       <Label layoutX="52.0" layoutY="148.0" prefHeight="34.0" prefWidth="258.0" text="Behandlungsfalldatum: ">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Button layoutX="249.0" layoutY="47.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="176.0" text="Auswahl anzeigen" />
+      <Button layoutX="249.0" layoutY="47.0" mnemonicParsing="false" onAction="#auswählen" prefHeight="64.0" prefWidth="176.0" text="Auswahl anzeigen" />
       <Button fx:id="abortSucheButton" layoutX="491.0" layoutY="40.0" mnemonicParsing="false" onAction="#abbrechen" prefHeight="64.0" prefWidth="129.0" text="Abbrechen" />
-      <TableView fx:id="bfallSuchergebnisse" layoutY="225.0" prefHeight="274.0" prefWidth="668.0">
+      <TableView fx:id="tb_Behandlungen" layoutY="225.0" prefHeight="274.0" prefWidth="668.0">
         <columns>
           <TableColumn prefWidth="75.0" text="C1" />
           <TableColumn prefWidth="75.0" text="C2" />
