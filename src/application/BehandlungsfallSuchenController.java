@@ -73,21 +73,21 @@ public class BehandlungsfallSuchenController implements Initializable {
 	public void suche() {
 		String datum = t_sucheDatum.getText();
 
-		IBehandlungpflegenFactory bpfFactory = new BehandlungpflegenFactory();
-
-		Collection<BehandlungTO> behandlungenTO = bpfFactory.getBehandlungenSuchen(datum);
-
-		behandlungsdaten.clear();
-		Behandlungsuche_Behandlungsdaten behandlungdaten;
-		for (BehandlungTO BehandlungTO : behandlungenTO) {
-			behandlungdaten = new Behandlungsuche_Behandlungsdaten();
-			//get ID, Arzt, Patient-------------------------------------------------ändern
-			behandlungdaten.setNachname(BehandlungTO.getNachname());
-			behandlungdaten.setVorname(BehandlungTO.getVorname());
-			behandlungdaten.setStr(BehandlungTO.getStr());
-			
-			behandlungsdaten.add(behandlungdaten);
-		}
+//		IBehandlungpflegenFactory bpfFactory = new BehandlungpflegenFactory();
+//
+//		Collection<BehandlungTO> behandlungenTO = bpfFactory.getBehandlungenSuchen(datum);
+//
+//		behandlungsdaten.clear();
+//		Behandlungsuche_Behandlungsdaten behandlungdaten;
+//		for (BehandlungTO BehandlungTO : behandlungenTO) {
+//			behandlungdaten = new Behandlungsuche_Behandlungsdaten();
+//			//get ID, Arzt, Patient-------------------------------------------------ändern
+//			behandlungdaten.setNachname(BehandlungTO.getNachname());
+//			behandlungdaten.setVorname(BehandlungTO.getVorname());
+//			behandlungdaten.setStr(BehandlungTO.getStr());
+//			
+//			behandlungsdaten.add(behandlungdaten);
+//		}
 		
 		
 
@@ -96,14 +96,14 @@ public class BehandlungsfallSuchenController implements Initializable {
 	}
 	
 	public void auswählen() {
-    	screencontroller.anzeigen(Hauptmenü.BHFPFLEGE, true);	    	
+    	screencontroller.anzeigen(Hauptmenü.BHFPFLEGE);	    	
     }
 	
 	public Behandlungsuche_Behandlungsdaten getBehandlung() {
     	return behandlung;    	
     }
 
-	public void abbrechen() {
-		screencontroller.anzeigen(Hauptmenü.BHFPFLEGE, false);
-	}
+    public void abbrechen() {
+    	screencontroller.anzeigen(Hauptmenü.BHFPFLEGE);	    	
+    }
 }

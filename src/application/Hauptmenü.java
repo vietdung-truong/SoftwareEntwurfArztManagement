@@ -19,16 +19,16 @@ public class Hauptmenü extends Application {
 	private Scene bhfpflege;
 	
 	public static final String MAINMENUE = "mainmenü";
-	public static final String BHFSUCHE = "bhfsuche";
 	public static final String BHFPFLEGE = "bhfpflege";
+	public static final String BHFSUCHE = "bhfsuche";
 	
 	private Stage mainStage;
 	
 	public Hauptmenü screenscontroller;
 	
-	private MainMenueController ctrlmain;
-	private BehandlungsfallSuchenController ctrlbhfsuche;
-	private BehandlungsfallPflegenController ctrlbhfpflege;
+//	public MainMenueController ctrlmain;
+//	public BehandlungsfallPflegenController ctrlpflegen;
+//	public BehandlungsfallSuchenController ctrlsuchen;	
 	
 	@Override
 	public void start(Stage primaryStage) {
@@ -38,33 +38,28 @@ public class Hauptmenü extends Application {
 		try {
 			FXMLLoader loader;
 			
-			/*  Internet-Version in einer Zeile (Zugriff auf AnchorPane aus SceneBuilder) 
-			 *  Link: https://stackoverflow.com/questions/22914895/fxml-load-exception 
-			 *  Zugriff am: 29.12.2018
-			*/ 
-
 			loader = new FXMLLoader(getClass().getResource("/application/MainMenue.fxml"));			
 			Parent menü_pane = (Parent) loader.load();
 			this.mainmenü = new Scene(menü_pane,600,600);
 			this.mainmenü.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-
+			MainMenueController ctrlmain = loader.getController();
+			ctrlmain.setScreenController(this);
 			
 			loader = new FXMLLoader(getClass().getResource("/application/BehandlungsfallPflegen.fxml"));
 			Parent bhfpflegen_pane = (Parent)loader.load();
-			this.bhfsuche = new Scene(bhfpflegen_pane,700,500);
-			this.bhfsuche.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			ctrlbhfpflege = loader.getController();
+			this.bhfpflege = new Scene(bhfpflegen_pane,900,800);
+			this.bhfpflege.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			BehandlungsfallPflegenController ctrlbhfpflege = loader.getController();
 			ctrlbhfpflege.setScreenController(this);
 			
 			loader = new FXMLLoader(getClass().getResource("/application/BehandlungsfallSuchen.fxml"));
 			Parent bhfsuche_pane = (Parent)loader.load();
 			this.bhfsuche = new Scene(bhfsuche_pane,700,500);
 			this.bhfsuche.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			ctrlbhfsuche = loader.getController();
+			BehandlungsfallSuchenController ctrlbhfsuche = loader.getController();
 			ctrlbhfsuche.setScreenController(this);
 			
-			
-			anzeigen(Hauptmenü.MAINMENUE, null);
+			anzeigen(Hauptmenü.MAINMENUE);
 		
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -72,20 +67,16 @@ public class Hauptmenü extends Application {
 	}
 	
 
-	public void anzeigen (String screen, Boolean auswahl) {
+	public void anzeigen (String screen)
+	{
 		
 		switch (screen) {
-		//Klären ----------------------------------------------------------------------------------------------!!
-		//warum muss es Hauptmenü.MAINMENUE heißen?
-		//reicht nicht einfach nur MAINMENUE? => es wird ja nur ein String überprüft
-		//warum also die Punktnotation mit Einbezug der Klasse Hauptmenü?
 			case Hauptmenü.MAINMENUE: mainStage.setScene(mainmenü);
 				break;
 			case Hauptmenü.BHFSUCHE: mainStage.setScene(bhfsuche);
 				break;
 			case Hauptmenü.BHFPFLEGE: 
-				if (auswahl == true  )
-				ctrlbhfpflege.setBehandlung(ctrlbhfsuche.getBehandlung());
+				//ctrlbhfpflege.setBehandlung(ctrlbhfsuche.getBehandlung());
 				mainStage.setScene(bhfpflege);
 				break;
 		}

@@ -30,7 +30,7 @@ import awk.entity.*;
 import awk.usecase.impl.*;
 
 
-public class BehandlungsfallPflegenController implements Initializable{
+public class BehandlungsfallPflegenController{
 
 		@FXML
 		private Button abortButton;
@@ -53,11 +53,6 @@ public class BehandlungsfallPflegenController implements Initializable{
 	    @FXML
 	    private Button b_abbrechen;
 	    
-		@Override
-		public void initialize(URL arg0, ResourceBundle arg1) {
-			// TODO Auto-generated method stub
-			
-		}
 
 		@FXML
 		private void loadBFallSuchen (ActionEvent event) throws IOException {
@@ -117,28 +112,28 @@ public class BehandlungsfallPflegenController implements Initializable{
     	this.screencontroller = screencontroller;
     }
     
-    public void initialize()  {
-    	
-    	t_behandlungsID.setText(behandlung.getNr());
-    	
-    	// erstellt Tabelle 
-    	tabc_nachname.setCellValueFactory(cellData -> cellData.getValue().nachnameProperty());
-    	tabc_vorname.setCellValueFactory(cellData -> cellData.getValue().vornameProperty()); 
-    	tabc_str.setCellValueFactory(cellData -> cellData.getValue().strProperty());
-    	tabc_nr.setCellValueFactory(cellData -> cellData.getValue().nrProperty());
-    	tabc_plz.setCellValueFactory(cellData -> cellData.getValue().plzProperty());
-    	tabc_ort.setCellValueFactory(cellData -> cellData.getValue().ortProperty());
-    	tabc_geschlecht.setCellValueFactory(cellData -> cellData.getValue().geschlechtProperty());
-    	tabc_ustid.setCellValueFactory(cellData -> cellData.getValue().ustidProperty());
-    	
-    	tb_Namen.setItems(show());
-    }
+//    public void initialize()  {
+//    	
+//    	t_behandlungsID.setText(behandlung.getNr());
+//    	
+//    	// erstellt Tabelle 
+//    	tabc_nachname.setCellValueFactory(cellData -> cellData.getValue().nachnameProperty());
+//    	tabc_vorname.setCellValueFactory(cellData -> cellData.getValue().vornameProperty()); 
+//    	tabc_str.setCellValueFactory(cellData -> cellData.getValue().strProperty());
+//    	tabc_nr.setCellValueFactory(cellData -> cellData.getValue().nrProperty());
+//    	tabc_plz.setCellValueFactory(cellData -> cellData.getValue().plzProperty());
+//    	tabc_ort.setCellValueFactory(cellData -> cellData.getValue().ortProperty());
+//    	tabc_geschlecht.setCellValueFactory(cellData -> cellData.getValue().geschlechtProperty());
+//    	tabc_ustid.setCellValueFactory(cellData -> cellData.getValue().ustidProperty());
+//    	
+//    	tb_Namen.setItems(show());
+//    }
 
-    public ObservableList<Behandlungsuche_Behandlungsdaten> show() {
-    	
-    	// hier Übertragen der Leistungen
-    	return behandlung.leistungen();
-    }
+//    public ObservableList<Behandlungsuche_Behandlungsdaten> show() {
+//    	
+//    	// hier Übertragen der Leistungen
+//    	return behandlung.leistungen();
+//    }
     
     
     
@@ -147,7 +142,7 @@ public class BehandlungsfallPflegenController implements Initializable{
     }
     
     public void abbrechen() {
-    	screencontroller.anzeigen(Hauptmenü.MAINMENUE, false);	    	
+    	screencontroller.anzeigen(Hauptmenü.MAINMENUE);	    	
     }
 	
 }
