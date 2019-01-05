@@ -33,20 +33,21 @@ public class JDBCCreateExampleTables {
 			stmt = conn.createStatement();
 			System.out.println("Statement established");
 			
-			//Hier wird die Tabelle erstellt
-			/*
-			 * System.out.println("Creating a Table..."); String sql =
-			 * "CREATE TABLE BEHANDLUNG (ID INTEGER not NULL, DATUM DATE, " +
-			 * "LEISTUNGEN VARCHAR(255), ARZT VARCHAR(20), PATIENT VARCHAR (20), " +
-			 * "BEHANDLUNGSART VARCHAR(20),  PRIMARY KEY (ID))"; stmt.executeUpdate(sql);
-			 * System.out.println("Table Behandlung has been created");
-			 */
 			
-			//Hier werden Beispiele hinzugefuegt
-			
+			  //Hier wird die Tabelle erstellt
+			  
+			  System.out.println("Creating a Table..."); String sql =
+			  "CREATE TABLE BEHANDLUNG (ID INTEGER not NULL AUTO_INCREMENT, DATUM DATE, " +
+			  "LEISTUNGEN VARCHAR(255), ARZT VARCHAR(20), PATIENT VARCHAR (20), " +
+			  "BEHANDLUNGSART VARCHAR(20),  PRIMARY KEY (ID))"; stmt.executeUpdate(sql);
+			  System.out.println("Table Behandlung has been created");
+			  
+			  
+			  //Hier werden Beispiele hinzugefuegt
+			 
 			System.out.println("Es werden 3 Beispiele hinzugefuegt...");
 			
-			String sql = "insert into behandlung ( arzt , patient , datum , leistungen , behandlungsart )"
+			sql = "insert into behandlung ( arzt , patient , datum , leistungen , behandlungsart )"
 					+ "values "
 					+ "( 'Margaret Neuenhofer', 'Viet Dung Truong', to_date ('2019-01-01', 'yyyy-mm-dd'), 'Truongs HP wurde geheilt', 'Heilung'),"
 					+ "( 'Max  Mustermann', 'Sven Zielonka',to_date ('2019-01-02', 'yyyy-mm-dd'), 'Jaehrliche Kontrolle', 'Kontrolle'),"
