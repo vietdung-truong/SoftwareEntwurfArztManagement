@@ -75,9 +75,9 @@ public class Hauptmenü extends Application {
 				break;
 			case Hauptmenü.BHFSUCHE: mainStage.setScene(bhfsuche);
 				break;
-			case Hauptmenü.BHFPFLEGE: 
+			case Hauptmenü.BHFPFLEGE: mainStage.setScene(bhfpflege); 
 				//ctrlbhfpflege.setBehandlung(ctrlbhfsuche.getBehandlung());
-				mainStage.setScene(bhfpflege);
+				
 				break;
 		}
 		

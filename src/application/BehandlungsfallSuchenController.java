@@ -24,7 +24,7 @@ import awk.entity.*;
 import awk.usecase.impl.*;
 import awk.usecases.*;
 
-public class BehandlungsfallSuchenController implements Initializable {
+public class BehandlungsfallSuchenController {
 
 	@FXML
 	private TextField t_sucheDatum;
@@ -59,16 +59,16 @@ public class BehandlungsfallSuchenController implements Initializable {
 		this.screencontroller = screencontroller;
 	}
 
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		
-		
+//	@Override
+//	public void initialize(URL arg0, ResourceBundle arg1) {
+//		
+//		
 //		// erstellt Tabelle 
 //    	tabc_behandlungsID.setCellValueFactory(cellData -> cellData.getValue().nachnameProperty());
 //    	tabc_arzt.setCellValueFactory(cellData -> cellData.getValue().vornameProperty()); 
 //    	tabc_patient.setCellValueFactory(cellData -> cellData.getValue().strProperty());
 //    	tb_Behandlungen.setItems(behandlungsdaten);
-	}
+//	}
 
 	public void suche() {
 		String datum = t_sucheDatum.getText();
@@ -103,7 +103,8 @@ public class BehandlungsfallSuchenController implements Initializable {
     	return behandlung;    	
     }
 
-    public void abbrechen() {
-    	screencontroller.anzeigen(Hauptmenü.BHFPFLEGE);	    	
+	public void sucheAbbrechen() {
+    	screencontroller.anzeigen(Hauptmenü.BHFPFLEGE); 
     }
+	
 }

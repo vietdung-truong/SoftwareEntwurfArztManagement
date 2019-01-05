@@ -18,7 +18,7 @@
          </font>
       </Label>
       <Button layoutX="249.0" layoutY="47.0" mnemonicParsing="false" onAction="#auswählen" prefHeight="64.0" prefWidth="176.0" text="Auswahl anzeigen" />
-      <Button fx:id="abortSucheButton" layoutX="491.0" layoutY="40.0" mnemonicParsing="false" onAction="#abbrechen" prefHeight="64.0" prefWidth="129.0" text="Abbrechen" />
+      <Button fx:id="abortSucheButton" layoutX="491.0" layoutY="40.0" mnemonicParsing="false" onAction="#sucheAbbrechen" prefHeight="64.0" prefWidth="129.0" text="Abbrechen" />
       <TableView fx:id="tb_Behandlungen" layoutY="225.0" prefHeight="274.0" prefWidth="668.0">
         <columns>
           <TableColumn prefWidth="75.0" text="C1" />
