@@ -1,12 +1,11 @@
 package awk.entity.internal;
 
-import java.util.*;
 import awk.datatypes.*;
 
 public class Behandlung {
 	int behandlungsID;
 	String datum;
-	String leistungen = String;
+	String leistungen;
 	String arzt;
 	String patient;
 	Behandlungsart behandlungsart;
@@ -18,11 +17,6 @@ public class Behandlung {
 		this.arzt = arzt;
 		this.patient = patient;
 		this.behandlungsart = behandlungsart;
-	}
-
-	public String getEckdaten() {
-
-		return leistungen.toString();
 	}
 
 	public void setBehandlungsID(int behandlungsID) {
@@ -47,6 +41,30 @@ public class Behandlung {
 
 	public void setBehandlungsart(Behandlungsart behandlungsart) {
 		this.behandlungsart = behandlungsart;
+	}
+
+	public int getBehandlungsID() {
+		return behandlungsID;
+	}
+
+	public String getDatum() {
+		return datum;
+	}
+
+	public String getLeistungen() {
+		return leistungen;
+	}
+
+	public String getArzt() {
+		return arzt;
+	}
+
+	public String getPatient() {
+		return patient;
+	}
+
+	public Behandlungsart getBehandlungsart() {
+		return behandlungsart;
 	}
 
 	

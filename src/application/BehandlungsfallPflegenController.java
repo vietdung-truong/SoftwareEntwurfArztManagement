@@ -1,5 +1,8 @@
 package application;
 
+import java.util.Collection;
+
+
 import javafx.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
@@ -14,39 +17,126 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+
+import awk.entity.*;
+import awk.usecase.impl.*;
+
+
 public class BehandlungsfallPflegenController implements Initializable{
 
-		@FXML
-		private Button abortButton;
+//		@FXML
+//		private Button abortButton;
+//	
+//		@FXML
+//		private AnchorPane bfallPflegenPane;
+//
+//		@Override
+//		public void initialize(URL arg0, ResourceBundle arg1) {
+//			// TODO Auto-generated method stub
+//			
+//		}
+//
+//		@FXML
+//		private void loadBFallSuchen (ActionEvent event) throws IOException {
+//			AnchorPane pane = FXMLLoader.load(getClass().getResource("BehandlungsfallSuchen.fxml"));
+//			bfallPflegenPane.getChildren().setAll(pane);
+//		}
+//		
+//		@FXML
+//		private void loadPrevWindow (ActionEvent event) throws IOException {
+//			Parent root;
+//		    Stage stage;
+//		    if (event.getSource() == abortButton) {
+//		        stage = (Stage) bfallPflegenPane.getScene().getWindow();
+//		        root = FXMLLoader.load(getClass().getResource("MainMenue.fxml"));
+//		        Scene scene = new Scene(root, 800, 700);
+//		        stage.setScene(scene);
+//		        stage.show();
+//		    }
+//			
+//		}
+		
+	@FXML
+    private TextField t_behandlungsID;
+    @FXML
+    private TextField t_datum;   
+    @FXML
+    private TextField t_arzt;   
+    @FXML
+    private TextField t_patient;   
+    @FXML
+    private Button b_abbrechen;
+    
+    
+    // ----- Tabellen Inhalt ----------------------------------------------------
+    
+    @FXML
+    private TableView<Behandlungsuche_Behandlungsdaten> tb_Namen;
+    @FXML
+    private TableColumn<Behandlungsuche_Behandlungsdaten, String> tabc_nachname;
+    @FXML
+    private TableColumn<Behandlungsuche_Behandlungsdaten, String> tabc_vorname;
+    @FXML
+    private TableColumn<Behandlungsuche_Behandlungsdaten, String> tabc_str;
+    @FXML
+    private TableColumn<Behandlungsuche_Behandlungsdaten, String> tabc_nr;
+    @FXML
+    private TableColumn<Behandlungsuche_Behandlungsdaten, String> tabc_plz;
+    @FXML
+    private TableColumn<Behandlungsuche_Behandlungsdaten, String> tabc_ort;
+    @FXML
+    private TableColumn<Behandlungsuche_Behandlungsdaten, String> tabc_geschlecht;
+    @FXML
+    private TableColumn<Behandlungsuche_Behandlungsdaten, String> tabc_ustid;
+    
+    
+    private Behandlungsuche_Behandlungsdaten behandlung;
+    
+    private Hauptmenü screencontroller;
+    
+    public void setScreenController (Hauptmenü screencontroller) {
+    	this.screencontroller = screencontroller;
+    }
+    
+    public void initialize()  {
+    	
+    	t_behandlungsID.setText(behandlung.getNr());
+    	
+    	// erstellt Tabelle 
+    	tabc_nachname.setCellValueFactory(cellData -> cellData.getValue().nachnameProperty());
+    	tabc_vorname.setCellValueFactory(cellData -> cellData.getValue().vornameProperty()); 
+    	tabc_str.setCellValueFactory(cellData -> cellData.getValue().strProperty());
+    	tabc_nr.setCellValueFactory(cellData -> cellData.getValue().nrProperty());
+    	tabc_plz.setCellValueFactory(cellData -> cellData.getValue().plzProperty());
+    	tabc_ort.setCellValueFactory(cellData -> cellData.getValue().ortProperty());
+    	tabc_geschlecht.setCellValueFactory(cellData -> cellData.getValue().geschlechtProperty());
+    	tabc_ustid.setCellValueFactory(cellData -> cellData.getValue().ustidProperty());
+    	
+    	tb_Namen.setItems(show());
+    }
+
+    public ObservableList<Behandlungsuche_Behandlungsdaten> show() {
+    	
+    	// hier Übertragen der Leistungen
+    	return behandlung.leistungen();
+    }
+    
+    
+    
+    public void setBehandlung(Behandlungsuche_Behandlungsdaten behandlung) {
+    	this.behandlung = behandlung; 
+    }
+    
+    public void abbrechen() {
+    	screencontroller.anzeigen(Hauptmenü.MAINMENUE, false);	    	
+    }
 	
-		@FXML
-		private AnchorPane bfallPflegenPane;
-
-		@Override
-		public void initialize(URL arg0, ResourceBundle arg1) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@FXML
-		private void loadBFallSuchen (ActionEvent event) throws IOException {
-			AnchorPane pane = FXMLLoader.load(getClass().getResource("BehandlungsfallSuchen.fxml"));
-			bfallPflegenPane.getChildren().setAll(pane);
-		}
-		
-		@FXML
-		private void loadPrevWindow (ActionEvent event) throws IOException {
-			Parent root;
-		    Stage stage;
-		    if (event.getSource() == abortButton) {
-		        stage = (Stage) bfallPflegenPane.getScene().getWindow();
-		        root = FXMLLoader.load(getClass().getResource("MainMenue.fxml"));
-		        Scene scene = new Scene(root, 800, 700);
-		        stage.setScene(scene);
-		        stage.show();
-		    }
-			
-		}
-		
 }
 

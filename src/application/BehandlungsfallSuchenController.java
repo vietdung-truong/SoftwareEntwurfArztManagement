@@ -1,8 +1,11 @@
 package application;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Collection;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
@@ -11,37 +14,90 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class BehandlungsfallSuchenController implements Initializable{
+import awk.entity.*;
+import awk.usecase.impl.*;
+import awk.usecases.*;
 
-		@FXML
-		private Button abortSucheButton;
+public class BehandlungsfallSuchenController implements Initializable {
+
+	@FXML
+	private TextField t_sucheDatum;
+
+	@FXML
+    private TableView<Behandlungsuche_Behandlungsdaten> tb_Namen;
+	@FXML
+	private TableView<Behandlungsuche_Behandlungsdaten> tb_Behandlungen;
+	@FXML
+	private TableColumn<Behandlungsuche_Behandlungsdaten, String> tabc_behandlungsID;
+	@FXML
+	private TableColumn<Behandlungsuche_Behandlungsdaten, String> tabc_arzt;
+	@FXML
+	private TableColumn<Behandlungsuche_Behandlungsdaten, String> tabc_patient;
+
+	// --------- Variablen ------------------------------------------------------------------------
+
 	
-		@FXML
-		private AnchorPane bfallSuchenPane;
+	private ObservableList<Behandlungsuche_Behandlungsdaten> behandlungsdaten = FXCollections.observableArrayList();
 
-		@Override
-		public void initialize(URL arg0, ResourceBundle arg1) {
-			// TODO Auto-generated method stub
-			
-		}
+	private Behandlungsuche_Behandlungsdaten behandlung; 
+	
+	private Hauptmenü screencontroller;
 
-				
-		@FXML
-		private void loadPrevWindow (ActionEvent event) throws IOException {
-			Parent root;
-		    Stage stage;
-		    if (event.getSource() == abortSucheButton) {
-		        stage = (Stage) bfallSuchenPane.getScene().getWindow();
-		        root = FXMLLoader.load(getClass().getResource("BehandlungsfallPflegen.fxml"));
-		        Scene scene = new Scene(root, 800, 700);
-		        stage.setScene(scene);
-		        stage.show();
-		    }
+	public void setScreenController(Hauptmenü screencontroller) {
+		this.screencontroller = screencontroller;
+	}
+
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		
+		
+		// erstellt Tabelle 
+    	tabc_behandlungsID.setCellValueFactory(cellData -> cellData.getValue().nachnameProperty());
+    	tabc_arzt.setCellValueFactory(cellData -> cellData.getValue().vornameProperty()); 
+    	tabc_patient.setCellValueFactory(cellData -> cellData.getValue().strProperty());
+    	
+    	tb_Namen.setItems(behandlungsdaten);
+	}
+
+	public void suche() {
+		String datum = t_sucheDatum.getText();
+
+		IBehandlungpflegenFactory bpfFactory = new BehandlungpflegenFactory();
+
+		Collection<BehandlungTO> behandlungenTO = bpfFactory.getBehandlungenSuchen(datum);
+
+		behandlungsdaten.clear();
+		Behandlungsuche_Behandlungsdaten behandlungdaten;
+		for (BehandlungTO BehandlungTO : behandlungenTO) {
+			behandlungdaten = new Behandlungsuche_Behandlungsdaten();
+			behandlungdaten.setNachname(BehandlungTO.getNachname());
+			behandlungdaten.setVorname(BehandlungTO.getVorname());
+			behandlungdaten.setStr(BehandlungTO.getStr());
 			
+			behandlungsdaten.add(behandlungdaten);
 		}
 		
-}
+		
 
+		System.out.println("Anzahl Einträge in Tabelle" + behandlungsdaten.size());
+
+	}
+	
+	public void auswählen() {
+    	screencontroller.anzeigen(Hauptmenü.BHFPFLEGE, true);	    	
+    }
+	
+	public Behandlungsuche_Behandlungsdaten getBehandlung() {
+    	return behandlung;    	
+    }
+
+	public void abbrechen() {
+		screencontroller.anzeigen(Hauptmenü.BHFPFLEGE, false);
+	}
+}

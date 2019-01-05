@@ -1,9 +1,12 @@
 package awk.usecases;
 
+import awk.usecase.impl.BehandlungPflegen;
+import awk.usecase.impl.BehandlungenSuchen;
+
 public interface IBehandlungpflegenFactory {
 	
-	public IBehandlungPflegen getBehandlungPflegen();
-	public IBehandlungenSuchen getBehandlungenSuchen();
+	public BehandlungPflegen getBehandlungPflegen();
+	public BehandlungenSuchen getBehandlungenSuchen();
 	
 
 }
