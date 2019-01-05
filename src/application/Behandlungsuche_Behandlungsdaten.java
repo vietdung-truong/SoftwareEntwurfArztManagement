@@ -75,6 +75,31 @@ public class Behandlungsuche_Behandlungsdaten {
 	public void setLeistungen(String leistungen) {
 		this.leistungen.set(leistungen);
 	}
+	
+	public StringProperty behandlungsIDProperty() {
+		return behandlungsID;
+	}
+
+	public StringProperty datumProperty() {
+		return datum;
+	}
+
+	public StringProperty arztProperty() {
+		return arzt;
+	}
+
+	public StringProperty patientProperty() {
+		return patient;
+	}
+
+	public StringProperty behandlungsartProperty() {
+		return behandlungsart;
+	}
+
+	public StringProperty leistungenProperty() {
+		return leistungen;
+	}
+	
 
 	// hier auch umwandlung von leistungen in Datentypen??
 
