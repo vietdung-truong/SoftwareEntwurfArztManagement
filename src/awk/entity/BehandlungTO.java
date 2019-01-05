@@ -1,8 +1,5 @@
 package awk.entity;
 
-import java.util.HashSet;
-import java.util.Set;
-
 
 public class BehandlungTO {
 	int behandlungsID;

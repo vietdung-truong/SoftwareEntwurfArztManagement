@@ -1,6 +1,7 @@
 package awk.usecase.impl;
 import java.util.*;
 
+import application.Behandlungsuche_Behandlungsdaten;
 import awk.datatypes.Behandlungsart;
 import awk.entity.*;
 import awk.entity.internal.Behandlung;
@@ -12,7 +13,20 @@ public class BehandlungPflegen {
 	public void behandlungsdatenSpeichern(int behandlungsID, String datum, String leistungen, String arzt,String patient, String behandlungsart) {
 		 BehandlungManager manager = new BehandlungManager();
 		 Behandlungsart bh;
-		 // Überprüfung valider Eingabe
+		 
+		 
+		 
+		 // Überprüfung valider Eingabe auch möglich
+		 
+//		 Boolean update;
+//		 Collection <BehandlungTO> tos= manager.nachBehandlungenSuchen(datum);
+//		 for (BehandlungTO BehandlungTO : tos) {
+//				if(BehandlungTO.getBehandlungsID() == behandlungsID)
+//					update = true;
+//			}
+		 
+		 
+		 
 		 if (behandlungsart == Behandlungsart.PRIVAT.toString()) {
 				 bh = Behandlungsart.PRIVAT;
 				 Behandlung behandlung = new Behandlung (behandlungsID,datum,leistungen,arzt,patient,bh);

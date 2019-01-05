@@ -19,7 +19,6 @@ public class BehandlungManager {
 	}
 	
 	public void BehandlungAnlegen(Behandlung behandlung) {
-		;
 		BehandlungDAO dao = new BehandlungDAO();	
 		BehandlungTO to = new BehandlungTO(behandlung.getBehandlungsID(), behandlung.getDatum(), behandlung.getLeistungen(), behandlung.getArzt(), behandlung.getPatient(), behandlung.getBehandlungsart().toString());
 		dao.updateBehandlung(to);
