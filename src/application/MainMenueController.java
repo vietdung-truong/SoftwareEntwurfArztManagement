@@ -21,11 +21,15 @@ public class MainMenueController implements Initializable{
 			// TODO Auto-generated method stub
 			
 		}
+		
+	    private Hauptmenü screenscontroller;
 
 		@FXML
 		private void loadBfallPflegen (ActionEvent event) throws IOException {
 			AnchorPane pane = FXMLLoader.load(getClass().getResource("BehandlungsfallPflegen.fxml"));
 			rootPane.getChildren().setAll(pane);
 		}
+		
+
 }
 

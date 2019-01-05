@@ -30,6 +30,12 @@ public class BehandlungsfallSuchenController implements Initializable {
 	private TextField t_sucheDatum;
 
 	@FXML
+	private TableView bfallSuchergebnisse;
+	
+	//Klären--------------------------------------------------------------------------!!
+	//Was für ein Name soll die Variable darstellen?
+	//Was stellt die Variable tb_Behandlungen dar?
+	@FXML
     private TableView<Behandlungsuche_Behandlungsdaten> tb_Namen;
 	@FXML
 	private TableView<Behandlungsuche_Behandlungsdaten> tb_Behandlungen;

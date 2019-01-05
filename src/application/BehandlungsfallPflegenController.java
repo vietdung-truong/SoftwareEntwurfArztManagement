@@ -31,52 +31,60 @@ import awk.usecase.impl.*;
 
 public class BehandlungsfallPflegenController implements Initializable{
 
-//		@FXML
-//		private Button abortButton;
-//	
-//		@FXML
-//		private AnchorPane bfallPflegenPane;
-//
-//		@Override
-//		public void initialize(URL arg0, ResourceBundle arg1) {
-//			// TODO Auto-generated method stub
-//			
-//		}
-//
-//		@FXML
-//		private void loadBFallSuchen (ActionEvent event) throws IOException {
-//			AnchorPane pane = FXMLLoader.load(getClass().getResource("BehandlungsfallSuchen.fxml"));
-//			bfallPflegenPane.getChildren().setAll(pane);
-//		}
-//		
-//		@FXML
-//		private void loadPrevWindow (ActionEvent event) throws IOException {
-//			Parent root;
-//		    Stage stage;
-//		    if (event.getSource() == abortButton) {
-//		        stage = (Stage) bfallPflegenPane.getScene().getWindow();
-//		        root = FXMLLoader.load(getClass().getResource("MainMenue.fxml"));
-//		        Scene scene = new Scene(root, 800, 700);
-//		        stage.setScene(scene);
-//		        stage.show();
-//		    }
-//			
-//		}
+		@FXML
+		private Button abortButton;
+	
+		@FXML
+		private AnchorPane bfallPflegenPane;
+
+		@Override
+		public void initialize(URL arg0, ResourceBundle arg1) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@FXML
+		private void loadBFallSuchen (ActionEvent event) throws IOException {
+			AnchorPane pane = FXMLLoader.load(getClass().getResource("BehandlungsfallSuchen.fxml"));
+			bfallPflegenPane.getChildren().setAll(pane);
+		}
+		
+		@FXML
+		private void loadPrevWindow (ActionEvent event) throws IOException {
+			Parent root;
+		    Stage stage;
+		    if (event.getSource() == abortButton) {
+		        stage = (Stage) bfallPflegenPane.getScene().getWindow();
+		        root = FXMLLoader.load(getClass().getResource("MainMenue.fxml"));
+		        Scene scene = new Scene(root, 800, 700);
+		        stage.setScene(scene);
+		        stage.show();
+		    }
+			
+		}
 		
 	@FXML
     private TextField t_behandlungsID;
     @FXML
     private TextField t_datum;   
     @FXML
+    private TextField t_LANR;
+    @FXML
     private TextField t_arzt;   
     @FXML
-    private TextField t_patient;   
+    private TextField t_patientID;
+    @FXML
+    private TextField t_patientName;   
     @FXML
     private Button b_abbrechen;
     
     
     // ----- Tabellen Inhalt ----------------------------------------------------
     
+    //Klären-----------------------------------------------------------------------------------------------!!
+    //Sinn?
+    //Anzeige der Stammdaten des Patienten sind unnötig an dieser Stelle.
+    //Hier müssen die Leistungen in der Tabelle abgebildet werden (LeistungsID, Leistungsname, Erklärung,  etc.)
     @FXML
     private TableView<Behandlungsuche_Behandlungsdaten> tb_Namen;
     @FXML
