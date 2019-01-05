@@ -23,7 +23,7 @@ public class MainMenueController {
 	    	
 	    }
 
-//	    //Beispiel fÃ¼r Scenenwechsel aus dem Internet: (funktioniert)
+//	    //Beispiel für Scenenwechsel aus dem Internet: (funktioniert)
 //		@FXML
 //		private AnchorPane rootPane;
 //		@FXML

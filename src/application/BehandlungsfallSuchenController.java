@@ -27,15 +27,7 @@ import awk.usecases.*;
 public class BehandlungsfallSuchenController {
 
 	@FXML
-	private TextField t_sucheDatum;
-
-	@FXML
-	private Button b_behandlungenSuchen;
-	@FXML
-	private Button b_auswahl;;
-	@FXML
-	private Button b_abbrechen;
-	
+	private TextField t_sucheDatum;	
 	@FXML
 	private TableView<Behandlungsuche_Behandlungsdaten> tb_Behandlungen;
 	@FXML
@@ -46,7 +38,7 @@ public class BehandlungsfallSuchenController {
 	private TableColumn<Behandlungsuche_Behandlungsdaten, String> tabc_patient;
 	
 
-	// --------- Variablen ------------------------------------------------------------------------
+	// --------- Variablen f√ºr die Behandlungsdatensuche------------------------------------------------------------------------
 
 	
 	private ObservableList<Behandlungsuche_Behandlungsdaten> behandlungsdaten = FXCollections.observableArrayList();
@@ -73,26 +65,29 @@ public class BehandlungsfallSuchenController {
 	public void suche() {
 		String datum = t_sucheDatum.getText();
 
-//		IBehandlungpflegenFactory bpfFactory = new BehandlungpflegenFactory();
-//
-//		Collection<BehandlungTO> behandlungenTO = bpfFactory.getBehandlungenSuchen(datum);
-//
-//		behandlungsdaten.clear();
-//		Behandlungsuche_Behandlungsdaten behandlungdaten;
-//		for (BehandlungTO BehandlungTO : behandlungenTO) {
-//			behandlungdaten = new Behandlungsuche_Behandlungsdaten();
-//			//get ID, Arzt, Patient-------------------------------------------------‰ndern
-//			behandlungdaten.setNachname(BehandlungTO.getNachname());
-//			behandlungdaten.setVorname(BehandlungTO.getVorname());
-//			behandlungdaten.setStr(BehandlungTO.getStr());
-//			
-//			behandlungsdaten.add(behandlungdaten);
-//		}
-		System.out.println("Anzahl Eintr‰ge in Tabelle = " + behandlungsdaten.size());
+		IBehandlungpflegenFactory bpfFactory = new BehandlungpflegenFactory();
+		Collection<BehandlungTO> behandlungenTO = bpfFactory.getBehandlungenSuchen().sucheBehandlungenPerDatum(datum);
+
+		behandlungsdaten.clear();
+		Behandlungsuche_Behandlungsdaten behandlungdaten;
+		for (BehandlungTO BehandlungTO : behandlungenTO) {
+			behandlungdaten = new Behandlungsuche_Behandlungsdaten();
+			//get ID, Arzt, Patient-------------------------------------------------√§ndern
+			behandlungdaten.getBehandlungsID();
+			behandlungdaten.
+			behandlungdaten.setStr(BehandlungTO.getStr());
+			
+			behandlungsdaten.add(behandlungdaten);
+		}
+		
+		
+
+		System.out.println("Anzahl Eintr√§ge in Tabelle" + behandlungsdaten.size());
+
 
 	}
 	
-	public void ausw‰hlen() {
+	public void ausw√§hlen() {
     	screencontroller.anzeigen(Hauptmenue.BHFPFLEGE);	    	
     }
 	
