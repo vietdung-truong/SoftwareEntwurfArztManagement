@@ -53,9 +53,9 @@ public class BehandlungsfallSuchenController {
 
 	private Behandlungsuche_Behandlungsdaten behandlung; 
 	
-	private Hauptmenü screencontroller;
+	private Hauptmenue screencontroller;
 
-	public void setScreenController(Hauptmenü screencontroller) {
+	public void setScreenController(Hauptmenue screencontroller) {
 		this.screencontroller = screencontroller;
 	}
 
@@ -96,7 +96,7 @@ public class BehandlungsfallSuchenController {
 	}
 	
 	public void auswählen() {
-    	screencontroller.anzeigen(Hauptmenü.BHFPFLEGE);	    	
+    	screencontroller.anzeigen(Hauptmenue.BHFPFLEGE);	    	
     }
 	
 	public Behandlungsuche_Behandlungsdaten getBehandlung() {
@@ -104,7 +104,7 @@ public class BehandlungsfallSuchenController {
     }
 
 	public void sucheAbbrechen() {
-    	screencontroller.anzeigen(Hauptmenü.BHFPFLEGE); 
+    	screencontroller.anzeigen(Hauptmenue.BHFPFLEGE); 
     }
 	
 }

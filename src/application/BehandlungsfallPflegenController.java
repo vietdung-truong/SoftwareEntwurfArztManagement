@@ -106,9 +106,9 @@ public class BehandlungsfallPflegenController{
     
     private Behandlungsuche_Behandlungsdaten behandlung;
     
-    private Hauptmenü screencontroller;
+    private Hauptmenue screencontroller;
     
-    public void setScreenController (Hauptmenü screencontroller) {
+    public void setScreenController (Hauptmenue screencontroller) {
     	this.screencontroller = screencontroller;
     }
     
@@ -142,7 +142,7 @@ public class BehandlungsfallPflegenController{
     }
     
     public void abbrechen() {
-    	screencontroller.anzeigen(Hauptmenü.MAINMENUE);	    	
+    	screencontroller.anzeigen(Hauptmenue.MAINMENUE);	    	
     }
 	
 }
