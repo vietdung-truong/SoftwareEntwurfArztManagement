@@ -49,7 +49,12 @@ public class JDBCCreateExampleTables {
 			
 			sql = "insert into behandlung ( arzt , patient , datum , leistungen , behandlungsart )"
 					+ "values "
-					+ "( 'Margaret Neuenhofer', 'Viet Dung Truong', to_date ('2019-01-01', 'yyyy-mm-dd'), 'Truongs HP wurde geheilt', 'Heilung'),"
+					+ "( 'Margaret Neuenhofer', 'Viet Dung Truong', to_date ('2019-01-01', 'yyyy-mm-dd'), "
+					+ "'<Leistungen>\r\n" + 
+					"  <Leistung Leistungsname=\"Heilung 1\" Erläuterung=\"Test Heilung 1\" />\r\n" + 
+					"  <Leistung Leistungsname=\"Heilung 2\" Erläuterung=\"Test Heilung 2\" />\r\n" + 
+					"  <Leistung Leistungsname=\"Heilung 3\" Erläuterung=\"Test Heilung 3\" />\r\n" + 
+					"</Leistungen>', 'Heilung'),"
 					+ "( 'Max  Mustermann', 'Sven Zielonka',to_date ('2019-01-02', 'yyyy-mm-dd'), 'Jaehrliche Kontrolle', 'Kontrolle'),"
 					+ "( 'John  Doe', 'Raphael Palombo',to_date ('2019-01-03', 'yyyy-mm-dd'), 'Erkaeltung', 'Heilung')";
 			stmt.executeUpdate(sql);

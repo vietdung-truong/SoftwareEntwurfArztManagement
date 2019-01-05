@@ -28,7 +28,7 @@ public class Persistence {
 			/* 
 			 * Form: @Rechnername:Port, "Db-User", "Password"
 			 */
-			aConnection = DriverManager.getConnection ("jdbc:h2:D:/Hochschule Nr/WebCloud/10_Lehre/WS_Eclipse_Neon/H2", "lexikon", "lexikon");
+			aConnection = DriverManager.getConnection ("jdbc:h2:~/softwareEntwurfTest", "as", "");
 		} catch (SQLException e) {
 				e.printStackTrace();
 		}
