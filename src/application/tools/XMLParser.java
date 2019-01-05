@@ -2,12 +2,16 @@ package application.tools;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.StringReader;
+import java.io.StringWriter;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
@@ -18,22 +22,29 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
+
+
 
 public class XMLParser {
 
-	public static void getXML(String Leistung) throws SAXException, IOException, ParserConfigurationException {
+	public static Map<String, String> getXML(String Leistung)
+			throws SAXException, IOException, ParserConfigurationException {
 
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder dBuilder = factory.newDocumentBuilder();
-		Document doc = dBuilder.parse(Leistung);
+		Document doc = dBuilder.parse(new InputSource (new StringReader(Leistung)));
 
 		doc.getDocumentElement().normalize();
 
-//		System.out.println("Root element: " + doc.getDocumentElement().getNodeName());
+		// System.out.println("Root element: " +
+		// doc.getDocumentElement().getNodeName());
 
 		NodeList nList = doc.getElementsByTagName("Leistung");
-		Map <String,String> map = new HashMap<>();
+		Map<String, String> map = new HashMap<>();
+
+		// Parsed Liste aus Leistungen
 		for (int i = 0; i < nList.getLength(); i++) {
 
 			Node nNode = nList.item(i);
@@ -44,89 +55,64 @@ public class XMLParser {
 
 				Element elem = (Element) nNode;
 
-				String name = elem.getAttribute("name");
-				String erläuterung = elem.getAttribute("erläuterung");
+				// Lädt Attribute aus XML
 
-//				Node node1 = elem.getElementsByTagName("firstname").item(0);
-//				String erläuterung = node1.getTextContent();
-//
-//				Node node2 = elem.getElementsByTagName("lastname").item(0);
-//				String lname = node2.getTextContent();
-//
-//				Node node3 = elem.getElementsByTagName("occupation").item(0);
-//				String occup = node3.getTextContent();
+				String name = elem.getAttribute("Leistungsname");
+
+				String erläuterung = elem.getAttribute("Erläuterung");
+
+				map.put(name, erläuterung);
 
 				System.out.printf("Leistungname: %s%n", name);
 				System.out.printf("Leistung Erläuterung: %s%n", erläuterung);
 			}
 		}
+		return map;
 	}
 
-	public static void setXML(String Leistung) {
+	public static String setXML(Map<String, String> map) throws ParserConfigurationException,
+    TransformerException  {
 
-		try {
-			String filepath = "c:\\file.xml";
-			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
-			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-			Document doc = docBuilder.parse(filepath);
+		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder = factory.newDocumentBuilder();
+        Document doc = builder.newDocument();
+        
+        Element root = doc.createElement("Leistungen");
+        doc.appendChild(root);
 
-			// Get the root element
-			Node company = doc.getFirstChild();
+        for (Map.Entry<String, String> entry : map.entrySet())
+        {
+        	 root.appendChild(createUser(doc, entry.getKey(), entry.getValue()));
+            
+        }
+        
+       
 
-			// Get the staff element , it may not working if tag has spaces, or
-			// whatever weird characters in front...it's better to use
-			// getElementsByTagName() to get it directly.
-			// Node staff = company.getFirstChild();
-
-			// Get the staff element by tag name directly
-			Node staff = doc.getElementsByTagName("staff").item(0);
-
-			// update staff attribute
-			NamedNodeMap attr = staff.getAttributes();
-			Node nodeAttr = attr.getNamedItem("id");
-			nodeAttr.setTextContent("2");
-
-			// append a new node to staff
-			Element age = doc.createElement("age");
-			age.appendChild(doc.createTextNode("28"));
-			staff.appendChild(age);
-
-			// loop the staff child node
-			NodeList list = staff.getChildNodes();
-
-			for (int i = 0; i < list.getLength(); i++) {
-
-				Node node = list.item(i);
-
-				// get the salary element, and update the value
-				if ("salary".equals(node.getNodeName())) {
-					node.setTextContent("2000000");
-				}
-
-				// remove firstname
-				if ("firstname".equals(node.getNodeName())) {
-					staff.removeChild(node);
-				}
-
-			}
-
-			// write the content into xml file
-			TransformerFactory transformerFactory = TransformerFactory.newInstance();
-			Transformer transformer = transformerFactory.newTransformer();
-			DOMSource source = new DOMSource(doc);
-			StreamResult result = new StreamResult(new File(filepath));
-			transformer.transform(source, result);
-
-			System.out.println("Done");
-
-		} catch (ParserConfigurationException pce) {
-			pce.printStackTrace();
-		} catch (TransformerException tfe) {
-			tfe.printStackTrace();
-		} catch (IOException ioe) {
-			ioe.printStackTrace();
-		} catch (SAXException sae) {
-			sae.printStackTrace();
-		}
+        TransformerFactory transformerFactory = TransformerFactory.newInstance();
+        Transformer transf = transformerFactory.newTransformer();
+        StringWriter writer = new StringWriter();
+        
+        transf.transform(new DOMSource (doc), new StreamResult (writer));
+        String s = writer.getBuffer().toString();
+        
+        System.out.println(s);
+        return s;
+		
 	}
+	  private static Node createUser(Document doc, String Leistungsname, String Erläuterung) {
+	        
+	        Element user = doc.createElement("Leistung");
+
+	        user.setAttribute("Leistungsname", Leistungsname);
+	        user.setAttribute("Erläuterung", Erläuterung);
+	      
+
+	        return user;
+	    }
+	
+	 
+	 
+	 
+	 
+	 
 }
