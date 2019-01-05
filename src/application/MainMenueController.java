@@ -1,35 +1,37 @@
 package application;
 
-import javafx.event.ActionEvent;
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
+import application.Hauptmenü;
 
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.layout.AnchorPane;
+//import java.io.IOException;
+//import java.net.URL;
+//import java.util.ResourceBundle;
+//import javafx.event.ActionEvent;
+//import javafx.fxml.FXML;
+//import javafx.fxml.FXMLLoader;
+//import javafx.scene.layout.AnchorPane;
 
-public class MainMenueController implements Initializable{
+public class MainMenueController {
 
-	
-		@FXML
-		private AnchorPane rootPane;
+	    private Hauptmenü screencontroller;
 
-		@Override
-		public void initialize(URL arg0, ResourceBundle arg1) {
-			// TODO Auto-generated method stub
-			
-		}
+	    public void setScreenController (Hauptmenü screencontroller) {
+	    	this.screencontroller = screencontroller;
+	    }
 		
-	    private Hauptmen� screenscontroller;
+		public void bFallAnzeigen() {
+	    	screencontroller.anzeigen(Hauptmenü.BHFPFLEGE);
+	    	
+	    }
 
-		@FXML
-		private void loadBfallPflegen (ActionEvent event) throws IOException {
-			AnchorPane pane = FXMLLoader.load(getClass().getResource("BehandlungsfallPflegen.fxml"));
-			rootPane.getChildren().setAll(pane);
-		}
+//	    //Beispiel für Scenenwechsel aus dem Internet: (funktioniert)
+//		@FXML
+//		private AnchorPane rootPane;
+//		@FXML
+//		private void bFallAnzeigen (ActionEvent event) throws IOException {
+//			AnchorPane pane = FXMLLoader.load(getClass().getResource("BehandlungsfallPflegen.fxml"));
+//			rootPane.getChildren().setAll(pane);
+//		}
 		
-		
+
 }
 

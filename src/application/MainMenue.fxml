@@ -5,7 +5,7 @@
 
 <AnchorPane fx:id="rootPane" prefHeight="521.0" prefWidth="514.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainMenueController">
    <children>
-      <Button layoutX="68.0" layoutY="68.0" mnemonicParsing="false" onAction="#loadBfallPflegen" prefHeight="63.0" prefWidth="154.0" text="B.-fall pflegen" />
+      <Button layoutX="68.0" layoutY="68.0" mnemonicParsing="false" onAction="#bFallAnzeigen" prefHeight="63.0" prefWidth="154.0" text="B.-fall pflegen" />
       <Button layoutX="281.0" layoutY="68.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="154.0" text="B.-fall anlegen" />
       <Button layoutX="76.0" layoutY="174.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="154.0" text="Arztdaten pflegen" />
       <Button layoutX="281.0" layoutY="174.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="154.0" text="Arzt anlegen" />
