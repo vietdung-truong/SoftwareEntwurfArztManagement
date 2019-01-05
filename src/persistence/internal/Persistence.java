@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+
 /* 
  * Die Klasse fasst alle Methoden zusammen, die direkt mit der DB zu tun haben
  */
@@ -58,4 +59,5 @@ public class Persistence {
 		return aResultSet;
 	}
 	
+
 }
