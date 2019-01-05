@@ -53,14 +53,15 @@ public class BehandlungDAO implements IBehandlungDAO {
 	@Override
 	public Collection<BehandlungTO> getBehandlungen(String datum) {
 		Connection aConnection = Persistence.getConnection();
-
+		
 		ResultSet resultSet;
-		Collection<BehandlungTO> result;
+		Collection<BehandlungTO> result = null;
+		
 		try {
 
-			resultSet = Persistence.executeQueryStatement(aConnection, "SELECT * FROM behandlungen");
+			resultSet = Persistence.executeQueryStatement(aConnection, "SELECT * FROM behandlungen WHERE Datum = '" + datum + "'");
 			while (resultSet.next()) {
-				result.add(new behandlungTO(resultSet.getInt("id"), resultSet.getString("datum")
+				result.add(new BehandlungTO(resultSet.getInt("id"), resultSet.getString("datum")
 						, resultSet.getString("leistungen"), resultSet.getString("arzt")
 						, resultSet.getString("patient"), resultSet.getString("behandlungsart")));
 

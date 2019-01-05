@@ -1,6 +1,6 @@
 package application;
 
-import application.Hauptmenü;
+import application.HauptmenÃ¼;
 
 //import java.io.IOException;
 //import java.net.URL;
@@ -12,18 +12,18 @@ import application.Hauptmenü;
 
 public class MainMenueController {
 
-	    private Hauptmenü screencontroller;
+	    private HauptmenÃ¼ screencontroller;
 
-	    public void setScreenController (Hauptmenü screencontroller) {
+	    public void setScreenController (HauptmenÃ¼ screencontroller) {
 	    	this.screencontroller = screencontroller;
 	    }
 		
 		public void bFallAnzeigen() {
-	    	screencontroller.anzeigen(Hauptmenü.BHFPFLEGE);
+	    	screencontroller.anzeigen(HauptmenÃ¼.BHFPFLEGE);
 	    	
 	    }
 
-//	    //Beispiel für Scenenwechsel aus dem Internet: (funktioniert)
+//	    //Beispiel fÃ¼r Scenenwechsel aus dem Internet: (funktioniert)
 //		@FXML
 //		private AnchorPane rootPane;
 //		@FXML
@@ -32,6 +32,6 @@ public class MainMenueController {
 //			rootPane.getChildren().setAll(pane);
 //		}
 		
-	
+
 }
 
