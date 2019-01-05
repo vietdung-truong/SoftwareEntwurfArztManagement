@@ -1,9 +1,9 @@
 package start;
-import application.Hauptmenü;
+import application.Hauptmenue;
 
 public class Start {
 	
 	public static void main(String[] args) {
-		Hauptmenü.Start_Dialog();
+		Hauptmenue.Start_Dialog();
 	}
 }

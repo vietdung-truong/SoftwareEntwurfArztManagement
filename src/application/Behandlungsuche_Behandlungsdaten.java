@@ -4,127 +4,78 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class Behandlungsuche_Behandlungsdaten {
-	private final StringProperty nachname;
-	private final StringProperty vorname;
-	private final StringProperty str;
-	private final StringProperty nr;
-	private final StringProperty plz;
-	private final StringProperty ort;
-	private final StringProperty geschlecht;
-	private final StringProperty ustid;
+	private final StringProperty behandlungsID;
+	private final StringProperty datum;
+	private final StringProperty arzt;
+	private final StringProperty patient;
+	private final StringProperty behandlungsart;
+	private final StringProperty leistungen;
 
-	public Behandlungsuche_Behandlungsdaten() {
-			this (null,null, null, null, null, null, null, null);
-		}
+	 public Behandlungsuche_Behandlungsdaten() {
+	 this (null, null, null, null, null, null);
+	 }
 
-	public Behandlungsuche_Behandlungsdaten(	String nachname, String vorname,
-										String str, String nr, String plz, String ort,
-										String geschlecht, String ustid) {
-	        this.nachname = new SimpleStringProperty(nachname);
-	        this.vorname = new SimpleStringProperty(vorname);
-	        this.str = new SimpleStringProperty(str);
-	        this.nr = new SimpleStringProperty(nr);
-	        this.plz = new SimpleStringProperty(plz);
-	        this.ort = new SimpleStringProperty(ort);
-	        this.geschlecht = new SimpleStringProperty(geschlecht);
-	        this.ustid = new SimpleStringProperty(ustid);
-		}
-	
-	// hier auch umwandlung von leistungen in Datentypen?? 
+	public Behandlungsuche_Behandlungsdaten(int behandlungsID, String datum, String arzt, String patient,
+			String behandlungsart, String leistungen) {
 
-	public String getnachname() {
-		return nachname.get();
+		String s = "" + behandlungsID;
+		this.behandlungsID = new SimpleStringProperty(s);
+		this.datum = new SimpleStringProperty(datum);
+		this.arzt = new SimpleStringProperty(arzt);
+		this.patient = new SimpleStringProperty(patient);
+		this.behandlungsart = new SimpleStringProperty(behandlungsart);
+		this.leistungen = new SimpleStringProperty(leistungen);
 	}
 
-	public void setNachname(String nachname) {
-		this.nachname.set(nachname);
+	public StringProperty getBehandlungsID() {
+		return behandlungsID;
 	}
 
-	public StringProperty nachnameProperty() {
-		return nachname;
+	public StringProperty getDatum() {
+		return datum;
 	}
 
-	public String getVorname() {
-		return vorname.get();
+	public StringProperty getArzt() {
+		return arzt;
 	}
 
-	public void setVorname(String vorname) {
-		this.vorname.set(vorname);
+	public StringProperty getPatient() {
+		return patient;
 	}
 
-	public StringProperty vornameProperty() {
-		return vorname;
+	public StringProperty getBehandlungsart() {
+		return behandlungsart;
 	}
 
-	public String getStr() {
-		return str.get();
+	public StringProperty getLeistungen() {
+		return leistungen;
 	}
 
-	public void setStr(String str) {
-		this.str.set(str);
+	public void setBehandlungsID(int behandlungsID) {
+		String s = "" + behandlungsID;
+		this.behandlungsID.set(s);
 	}
 
-	public StringProperty strProperty() {
-		return str;
+	public void setDatum(String datum) {
+		this.datum.set(datum);
 	}
 
-	public String getNr() {
-		return nr.get();
+	public void setArzt(String arzt) {
+		this.arzt.set(arzt);
 	}
 
-	public void setNr(String nr) {
-		this.nr.set(nr);
+	public void setPatient(String patient) {
+		this.patient.set(patient);
 	}
 
-	public StringProperty nrProperty() {
-		return nr;
+	public void setBehandlungsart(String behandlungsart) {
+		this.behandlungsart.set(behandlungsart);
 	}
 
-	public String getPlz() {
-		return plz.get();
+	public void setLeistungen(String leistungen) {
+		this.leistungen.set(leistungen);
 	}
 
-	public void setPlz(String plz) {
-		this.plz.set(plz);
-	}
+	// hier auch umwandlung von leistungen in Datentypen??
 
-	public StringProperty plzProperty() {
-		return plz;
-	}
-
-	public String getOrt() {
-		return ort.get();
-	}
-
-	public void setOrt(String ort) {
-		this.ort.set(ort);
-	}
-
-	public StringProperty ortProperty() {
-		return ort;
-	}
-
-	public String getGeschlecht() {
-		return geschlecht.get();
-	}
-
-	public void setGeschlecht(String geschlecht) {
-		this.geschlecht.set(geschlecht);
-	}
-
-	public StringProperty geschlechtProperty() {
-		return geschlecht;
-	}
-
-	public String getUstid() {
-		return ustid.get();
-	}
-
-	public void setUstid(String ustid) {
-		this.ustid.set(ustid);
-	}
-
-	public StringProperty ustidProperty() {
-		return ustid;
-	}
 }

@@ -27,15 +27,7 @@ import awk.usecases.*;
 public class BehandlungsfallSuchenController {
 
 	@FXML
-	private TextField t_sucheDatum;
-
-	@FXML
-	private Button b_behandlungenSuchen;
-	@FXML
-	private Button b_auswahl;;
-	@FXML
-	private Button b_abbrechen;
-	
+	private TextField t_sucheDatum;	
 	@FXML
 	private TableView<Behandlungsuche_Behandlungsdaten> tb_Behandlungen;
 	@FXML
@@ -46,16 +38,16 @@ public class BehandlungsfallSuchenController {
 	private TableColumn<Behandlungsuche_Behandlungsdaten, String> tabc_patient;
 	
 
-	// --------- Variablen ------------------------------------------------------------------------
+	// --------- Variablen für die Behandlungsdatensuche------------------------------------------------------------------------
 
 	
 	private ObservableList<Behandlungsuche_Behandlungsdaten> behandlungsdaten = FXCollections.observableArrayList();
 
 	private Behandlungsuche_Behandlungsdaten behandlung; 
 	
-	private Hauptmenü screencontroller;
+	private Hauptmenue screencontroller;
 
-	public void setScreenController(Hauptmenü screencontroller) {
+	public void setScreenController(Hauptmenue screencontroller) {
 		this.screencontroller = screencontroller;
 	}
 
@@ -73,21 +65,20 @@ public class BehandlungsfallSuchenController {
 	public void suche() {
 		String datum = t_sucheDatum.getText();
 
-//		IBehandlungpflegenFactory bpfFactory = new BehandlungpflegenFactory();
-//
-//		Collection<BehandlungTO> behandlungenTO = bpfFactory.getBehandlungenSuchen(datum);
-//
-//		behandlungsdaten.clear();
-//		Behandlungsuche_Behandlungsdaten behandlungdaten;
-//		for (BehandlungTO BehandlungTO : behandlungenTO) {
-//			behandlungdaten = new Behandlungsuche_Behandlungsdaten();
-//			//get ID, Arzt, Patient-------------------------------------------------ändern
-//			behandlungdaten.setNachname(BehandlungTO.getNachname());
-//			behandlungdaten.setVorname(BehandlungTO.getVorname());
-//			behandlungdaten.setStr(BehandlungTO.getStr());
-//			
-//			behandlungsdaten.add(behandlungdaten);
-//		}
+		IBehandlungpflegenFactory bpfFactory = new BehandlungpflegenFactory();
+		Collection<BehandlungTO> behandlungenTO = bpfFactory.getBehandlungenSuchen().sucheBehandlungenPerDatum(datum);
+
+		behandlungsdaten.clear();
+		Behandlungsuche_Behandlungsdaten behandlungdaten;
+		for (BehandlungTO BehandlungTO : behandlungenTO) {
+			behandlungdaten = new Behandlungsuche_Behandlungsdaten();
+			//get ID, Arzt, Patient-------------------------------------------------ändern
+			behandlungdaten.getBehandlungsID();
+			behandlungdaten.setVorname(BehandlungTO.getVorname());
+			behandlungdaten.setStr(BehandlungTO.getStr());
+			
+			behandlungsdaten.add(behandlungdaten);
+		}
 		
 		
 
@@ -96,7 +87,7 @@ public class BehandlungsfallSuchenController {
 	}
 	
 	public void auswählen() {
-    	screencontroller.anzeigen(Hauptmenü.BHFPFLEGE);	    	
+    	screencontroller.anzeigen(Hauptmenue.BHFPFLEGE);	    	
     }
 	
 	public Behandlungsuche_Behandlungsdaten getBehandlung() {
@@ -104,7 +95,7 @@ public class BehandlungsfallSuchenController {
     }
 
 	public void sucheAbbrechen() {
-    	screencontroller.anzeigen(Hauptmenü.BHFPFLEGE); 
+    	screencontroller.anzeigen(Hauptmenue.BHFPFLEGE); 
     }
 	
 }
