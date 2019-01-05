@@ -14,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -37,6 +38,21 @@ public class BehandlungsfallPflegenController implements Initializable{
 		@FXML
 		private AnchorPane bfallPflegenPane;
 
+		@FXML
+	    private Label t_behandlungsID;
+	    @FXML
+	    private Label t_datum;   
+	    @FXML
+	    private Label t_LANR;
+	    @FXML
+	    private Label t_arzt;   
+	    @FXML
+	    private Label t_patientID;
+	    @FXML
+	    private Label t_patientName;   
+	    @FXML
+	    private Button b_abbrechen;
+	    
 		@Override
 		public void initialize(URL arg0, ResourceBundle arg1) {
 			// TODO Auto-generated method stub
@@ -63,21 +79,7 @@ public class BehandlungsfallPflegenController implements Initializable{
 			
 		}
 		
-	@FXML
-    private TextField t_behandlungsID;
-    @FXML
-    private TextField t_datum;   
-    @FXML
-    private TextField t_LANR;
-    @FXML
-    private TextField t_arzt;   
-    @FXML
-    private TextField t_patientID;
-    @FXML
-    private TextField t_patientName;   
-    @FXML
-    private Button b_abbrechen;
-    
+
     
     // ----- Tabellen Inhalt ----------------------------------------------------
     
@@ -103,6 +105,8 @@ public class BehandlungsfallPflegenController implements Initializable{
     private TableColumn<Behandlungsuche_Behandlungsdaten, String> tabc_geschlecht;
     @FXML
     private TableColumn<Behandlungsuche_Behandlungsdaten, String> tabc_ustid;
+    //Leistung hat: Name / beschreibung
+    
     
     
     private Behandlungsuche_Behandlungsdaten behandlung;

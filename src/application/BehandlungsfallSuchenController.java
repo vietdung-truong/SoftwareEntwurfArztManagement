@@ -63,11 +63,11 @@ public class BehandlungsfallSuchenController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
 		
-		// erstellt Tabelle 
-    	tabc_behandlungsID.setCellValueFactory(cellData -> cellData.getValue().nachnameProperty());
-    	tabc_arzt.setCellValueFactory(cellData -> cellData.getValue().vornameProperty()); 
-    	tabc_patient.setCellValueFactory(cellData -> cellData.getValue().strProperty());
-    	tb_Behandlungen.setItems(behandlungsdaten);
+//		// erstellt Tabelle 
+//    	tabc_behandlungsID.setCellValueFactory(cellData -> cellData.getValue().nachnameProperty());
+//    	tabc_arzt.setCellValueFactory(cellData -> cellData.getValue().vornameProperty()); 
+//    	tabc_patient.setCellValueFactory(cellData -> cellData.getValue().strProperty());
+//    	tb_Behandlungen.setItems(behandlungsdaten);
 	}
 
 	public void suche() {
