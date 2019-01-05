@@ -7,5 +7,5 @@ import awk.entity.BehandlungTO;
 
 public interface IBehandlungenSuchen {
 
-	public Collection<BehandlungTO> sucheBehandlungenPerDatum ();
+	public Collection<BehandlungTO> sucheBehandlungenPerDatum (String datum);
 }

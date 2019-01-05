@@ -1,8 +1,5 @@
 package jdbc;
 
-import java.sql.*;
-import java.util.*;
-
 public class JDBCCreateDatabase {
 
 	static final String JDBC_DRIVER = "org.h2.Driver";  
