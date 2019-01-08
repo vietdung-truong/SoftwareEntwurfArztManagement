@@ -38,7 +38,7 @@ public class BehandlungsfallSuchenController {
 	private TableColumn<Behandlungsuche_Behandlungsdaten, String> tabc_patient;
 	
 
-	// --------- Variablen für die Behandlungsdatensuche------------------------------------------------------------------------
+	// --------- Variablen fÃ¼r die Behandlungsdatensuche------------------------------------------------------------------------
 
 	
 	private ObservableList<Behandlungsuche_Behandlungsdaten> behandlungsdaten = FXCollections.observableArrayList();
@@ -73,33 +73,38 @@ public class BehandlungsfallSuchenController {
 		Behandlungsuche_Behandlungsdaten behandlungdaten;
 		for (BehandlungTO BehandlungTO : behandlungenTO) {
 			behandlungdaten = new Behandlungsuche_Behandlungsdaten();
-			//get ID, Arzt, Patient-------------------------------------------------ändern
+
+			//get ID, Arzt, Patient-------------------------------------------------ï¿½ndern
 			behandlungdaten.setBehandlungsID(BehandlungTO.getBehandlungsID());
 			behandlungdaten.setBehandlungsart(BehandlungTO.getBehandlungsart());
 			behandlungdaten.setArzt(BehandlungTO.getArzt());
 			behandlungdaten.setPatient(BehandlungTO.getPatient());
 			behandlungdaten.setLeistungen(BehandlungTO.getLeistungen());
 			behandlungdaten.setDatum(BehandlungTO.getDatum());
-			
+	
 			behandlungsdaten.add(behandlungdaten);
 		}
 		
 		
 
-		System.out.println("Anzahl Einträge in Tabelle" + behandlungsdaten.size());
+		System.out.println("Anzahl EintrÃ¤ge in Tabelle" + behandlungsdaten.size());
+
 
 	}
 	
-	public void auswählen() {
+	public void auswÃ¤hlen() {
     	screencontroller.anzeigen(Hauptmenue.BHFPFLEGE);	    	
     }
 	
 	public Behandlungsuche_Behandlungsdaten getBehandlung() {
     	return behandlung;    	
     }
-
+    
+	@FXML
 	public void sucheAbbrechen() {
     	screencontroller.anzeigen(Hauptmenue.BHFPFLEGE); 
     }
+	
+	
 	
 }
