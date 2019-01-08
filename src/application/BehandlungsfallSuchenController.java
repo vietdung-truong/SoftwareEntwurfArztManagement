@@ -56,12 +56,13 @@ public class BehandlungsfallSuchenController {
 //		
 //		
 //		// erstellt Tabelle 
-//    	tabc_behandlungsID.setCellValueFactory(cellData -> cellData.getValue().nachnameProperty());
-//    	tabc_arzt.setCellValueFactory(cellData -> cellData.getValue().vornameProperty()); 
-//    	tabc_patient.setCellValueFactory(cellData -> cellData.getValue().strProperty());
+//    	tabc_behandlungsID.setCellValueFactory(cellData -> cellData.getValue().behandlungsIDProperty());
+//    	tabc_arzt.setCellValueFactory(cellData -> cellData.getValue().arztProperty()); 
+//    	tabc_patient.setCellValueFactory(cellData -> cellData.getValue().patientProperty());
 //    	tb_Behandlungen.setItems(behandlungsdaten);
 //	}
 
+	
 	public void suche() {
 		String datum = t_sucheDatum.getText();
 
@@ -72,11 +73,15 @@ public class BehandlungsfallSuchenController {
 		Behandlungsuche_Behandlungsdaten behandlungdaten;
 		for (BehandlungTO BehandlungTO : behandlungenTO) {
 			behandlungdaten = new Behandlungsuche_Behandlungsdaten();
-			//get ID, Arzt, Patient-------------------------------------------------ändern
-			behandlungdaten.getBehandlungsID();
-			behandlungdaten.
-			behandlungdaten.setStr(BehandlungTO.getStr());
-			
+
+			//get ID, Arzt, Patient-------------------------------------------------�ndern
+			behandlungdaten.setBehandlungsID(BehandlungTO.getBehandlungsID());
+			behandlungdaten.setBehandlungsart(BehandlungTO.getBehandlungsart());
+			behandlungdaten.setArzt(BehandlungTO.getArzt());
+			behandlungdaten.setPatient(BehandlungTO.getPatient());
+			behandlungdaten.setLeistungen(BehandlungTO.getLeistungen());
+			behandlungdaten.setDatum(BehandlungTO.getDatum());
+	
 			behandlungsdaten.add(behandlungdaten);
 		}
 		
