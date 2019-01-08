@@ -41,6 +41,7 @@ public class BehandlungsfallSuchenController {
 
 	public void initialize() {
 		
+		//*********************Fehlermeldung nicht Teil der API ********
 		// erstellt Tabelle 
     	tabc_behandlungsID.setCellValueFactory(cellData -> cellData.getValue().behandlungsIDProperty());
     	tabc_arzt.setCellValueFactory(cellData -> cellData.getValue().arztProperty()); 
