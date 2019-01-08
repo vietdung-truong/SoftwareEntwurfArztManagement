@@ -21,9 +21,9 @@
       <Button layoutX="491.0" layoutY="40.0" mnemonicParsing="false" onAction="#sucheAbbrechen" prefHeight="64.0" prefWidth="129.0" text="Abbrechen" />
       <TableView fx:id="tb_Behandlungen" layoutY="225.0" prefHeight="274.0" prefWidth="668.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="Behandlungs-ID" />
-          <TableColumn prefWidth="75.0" text="Arzt" />
-          <TableColumn prefWidth="75.0" text="Patient" />
+          <TableColumn fx:id="tabc_behandlungsID" prefWidth="75.0" text="Behandlungs-ID" />
+          <TableColumn fx:id="tabc_arzt" prefWidth="75.0" text="Arzt" />
+          <TableColumn fx:id="tabc_patient" prefWidth="75.0" text="Patient" />
 
         </columns>
          <columnResizePolicy>

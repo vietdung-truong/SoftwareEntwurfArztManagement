@@ -7,7 +7,7 @@ public class JDBCCreateExampleTables {
 	static final String JDBC_DRIVER = "org.h2.Driver";
 	static String Database = null;
 	static String DB_URL = "jdbc:h2:~/softwareEntwurfTest";
-	static final String Username = "sa";
+	static final String Username = "as";
 	static final String Password = "";
 	
 	//Testing water
