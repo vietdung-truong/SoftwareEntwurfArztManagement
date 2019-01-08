@@ -62,6 +62,7 @@ public class BehandlungsfallSuchenController {
 //    	tb_Behandlungen.setItems(behandlungsdaten);
 //	}
 
+	
 	public void suche() {
 		String datum = t_sucheDatum.getText();
 
