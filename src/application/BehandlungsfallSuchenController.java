@@ -38,7 +38,7 @@ public class BehandlungsfallSuchenController {
 	private TableColumn<Behandlungsuche_Behandlungsdaten, String> tabc_patient;
 	
 
-	// --------- Variablen für die Behandlungsdatensuche------------------------------------------------------------------------
+	// --------- Variablen f�r die Behandlungsdatensuche------------------------------------------------------------------------
 
 	
 	private ObservableList<Behandlungsuche_Behandlungsdaten> behandlungsdaten = FXCollections.observableArrayList();
@@ -50,17 +50,16 @@ public class BehandlungsfallSuchenController {
 	public void setScreenController(Hauptmenue screencontroller) {
 		this.screencontroller = screencontroller;
 	}
+	
 
-//	@Override
-//	public void initialize(URL arg0, ResourceBundle arg1) {
-//		
-//		
-//		// erstellt Tabelle 
-//    	tabc_behandlungsID.setCellValueFactory(cellData -> cellData.getValue().behandlungsIDProperty());
-//    	tabc_arzt.setCellValueFactory(cellData -> cellData.getValue().arztProperty()); 
-//    	tabc_patient.setCellValueFactory(cellData -> cellData.getValue().patientProperty());
-//    	tb_Behandlungen.setItems(behandlungsdaten);
-//	}
+	public void initialize() {
+		
+		// erstellt Tabelle 
+    	tabc_behandlungsID.setCellValueFactory(cellData -> cellData.getValue().behandlungsIDProperty());
+    	tabc_arzt.setCellValueFactory(cellData -> cellData.getValue().arztProperty()); 
+    	tabc_patient.setCellValueFactory(cellData -> cellData.getValue().patientProperty());
+    	tb_Behandlungen.setItems(behandlungsdaten);
+	}
 
 	
 	public void suche() {
@@ -74,7 +73,6 @@ public class BehandlungsfallSuchenController {
 		for (BehandlungTO BehandlungTO : behandlungenTO) {
 			behandlungdaten = new Behandlungsuche_Behandlungsdaten();
 
-			//get ID, Arzt, Patient-------------------------------------------------�ndern
 			behandlungdaten.setBehandlungsID(BehandlungTO.getBehandlungsID());
 			behandlungdaten.setBehandlungsart(BehandlungTO.getBehandlungsart());
 			behandlungdaten.setArzt(BehandlungTO.getArzt());
@@ -87,12 +85,16 @@ public class BehandlungsfallSuchenController {
 		
 		
 
-		System.out.println("Anzahl Einträge in Tabelle" + behandlungsdaten.size());
+		System.out.println("Anzahl Eintraege in Tabelle" + behandlungsdaten.size());
 
 
 	}
 	
-	public void auswählen() {
+	public void auswaehlen() {
+		
+		//FUNKTION ERGAENZEN: DATEN AUS TABELLE ZIEHEN------------------------------------------------------------------------!!!!!!!!!!!!!!
+		
+		
     	screencontroller.anzeigen(Hauptmenue.BHFPFLEGE);	    	
     }
 	
