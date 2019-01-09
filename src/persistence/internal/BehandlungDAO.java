@@ -3,9 +3,11 @@ package persistence.internal;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.Set;
 
 
@@ -15,6 +17,8 @@ import persistence.IBehandlungDAO;
 
 
 public class BehandlungDAO implements IBehandlungDAO {
+	
+	
 	@Override
 	public void updateBehandlung(BehandlungTO behandlungTO) {
 
@@ -25,16 +29,35 @@ public class BehandlungDAO implements IBehandlungDAO {
 		String patient = behandlungTO.getPatient();
 		String Behandlungsart = behandlungTO.getBehandlungsart();
 
+		//Transform the date format
+		final String OLD_FORMAT = "dd.MM.yyyy";
+		final String NEW_FORMAT = "yyyy-MM-dd";
+
+		try {
+			String oldDateString = datum;
+			String newDateString;
+
+			SimpleDateFormat sdf = new SimpleDateFormat(OLD_FORMAT);
+			Date d;
+			d = sdf.parse(oldDateString);
+			sdf.applyPattern(NEW_FORMAT);
+			newDateString = sdf.format(d);
+			datum = newDateString;
+
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 
 		Connection aConnection = Persistence.getConnection();
-
+		
 		try {
 			Persistence.executeUpdateStatement(aConnection,
 
 					"update behandlung set"
 					+ "arzt = '" + arzt + "', "
 					+ "patient = '" + patient + "', "
-					+ "datum = TO_DATE('2019-11-01', 'YYYY-MM-DD'), " //hier müssenwir noch Datumsformat abstimmen
+					+ "datum = TO_DATE('" + datum + "', 'YYYY-MM-DD'), " //hier müssen wir noch Datumsformat abstimmen
 					+ "behandlungsart = '" + Behandlungsart + "', "
 					+ "leistungen = '" + leistungen + "' "
 					+ "where ID = " + behandlungsID + "");
@@ -52,6 +75,25 @@ public class BehandlungDAO implements IBehandlungDAO {
 	
 	@Override
 	public Collection<BehandlungTO> getBehandlungen(String datum) {
+		
+		final String OLD_FORMAT = "dd.MM.yyyy";
+		final String NEW_FORMAT = "yyyy-MM-dd"; 
+		try {
+			String oldDateString = datum;
+			String newDateString;
+
+			SimpleDateFormat sdf = new SimpleDateFormat(OLD_FORMAT);
+			Date d;
+			d = sdf.parse(oldDateString);
+			sdf.applyPattern(NEW_FORMAT);
+			newDateString = sdf.format(d);
+			datum = newDateString;
+
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 		Connection aConnection = Persistence.getConnection();
 		
 		ResultSet resultSet;
@@ -76,5 +118,4 @@ public class BehandlungDAO implements IBehandlungDAO {
 		return result;
 
 	}
-
 }
