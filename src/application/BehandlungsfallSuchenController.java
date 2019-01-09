@@ -73,7 +73,7 @@ public class BehandlungsfallSuchenController {
 		
 		
 
-		System.out.println("Anzahl Eintraege in Tabelle" + behandlungsdaten.size());
+		System.out.println("Anzahl Eintraege in Tabelle = " + behandlungsdaten.size());
 
 
 	}
