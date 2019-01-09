@@ -11,9 +11,6 @@ public class Behandlungsuche_Behandlungsdaten {
 	private final StringProperty behandlungsart;
 	private final StringProperty leistungen;
 
-	 public Behandlungsuche_Behandlungsdaten() {
-	 this (null, null, null, null, null, null);
-	 }
 
 	public Behandlungsuche_Behandlungsdaten(int behandlungsID, String datum, String arzt, String patient,
 			String behandlungsart, String leistungen) {

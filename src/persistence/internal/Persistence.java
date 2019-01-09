@@ -28,7 +28,7 @@ public class Persistence {
 			/* 
 			 * Form: @Rechnername:Port, "Db-User", "Password"
 			 */
-			aConnection = DriverManager.getConnection ("jdbc:h2:~/test", "sa", "");
+			aConnection = DriverManager.getConnection ("jdbc:h2:~/softwareEntwurfTest", "as", "");
 		} catch (SQLException e) {
 				e.printStackTrace();
 		}

@@ -101,7 +101,7 @@ public class BehandlungDAO implements IBehandlungDAO {
 		
 		try {
 
-			resultSet = Persistence.executeQueryStatement(aConnection, "SELECT * FROM behandlungen WHERE Datum = '" + datum + "'");
+			resultSet = Persistence.executeQueryStatement(aConnection, "SELECT * FROM behandlung WHERE Datum = '" + datum + "'");
 			while (resultSet.next()) {
 				result.add(new BehandlungTO(resultSet.getInt("id"), resultSet.getString("datum")
 						, resultSet.getString("leistungen"), resultSet.getString("arzt")
