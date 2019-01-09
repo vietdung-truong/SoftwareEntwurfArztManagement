@@ -97,7 +97,7 @@ public class BehandlungDAO implements IBehandlungDAO {
 		Connection aConnection = Persistence.getConnection();
 		
 		ResultSet resultSet;
-		Collection<BehandlungTO> result = null;
+		Collection<BehandlungTO> result = new ArrayList<BehandlungTO>();
 		
 		try {
 
