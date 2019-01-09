@@ -59,16 +59,16 @@ public class BehandlungsfallSuchenController {
 		behandlungsdaten.clear();
 		Behandlungsuche_Behandlungsdaten behandlungdaten;
 		for (BehandlungTO BehandlungTO : behandlungenTO) {
-			behandlungdaten = new Behandlungsuche_Behandlungsdaten();
+			behandlungdaten = new Behandlungsuche_Behandlungsdaten(
+					BehandlungTO.getBehandlungsID(),
+					BehandlungTO.getDatum(),
+					BehandlungTO.getArzt(),
+					BehandlungTO.getPatient(),
+					BehandlungTO.getBehandlungsart(),
+					BehandlungTO.getLeistungen()
+			);
 
-			behandlungdaten.setBehandlungsID(BehandlungTO.getBehandlungsID());
-			behandlungdaten.setBehandlungsart(BehandlungTO.getBehandlungsart());
-			behandlungdaten.setArzt(BehandlungTO.getArzt());
-			behandlungdaten.setPatient(BehandlungTO.getPatient());
-			behandlungdaten.setLeistungen(BehandlungTO.getLeistungen());
-			behandlungdaten.setDatum(BehandlungTO.getDatum());
-	
-			behandlungsdaten.add(behandlungdaten);
+						behandlungsdaten.add(behandlungdaten);
 		}
 		
 		
