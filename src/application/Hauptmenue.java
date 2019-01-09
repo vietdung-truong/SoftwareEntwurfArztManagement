@@ -11,6 +11,7 @@ import javafx.scene.layout.AnchorPane;
 import application.BehandlungsfallSuchenController;
 import application.BehandlungsfallPflegenController;
 import application.MainMenueController;
+import application.Behandlungsuche_Behandlungsdaten;
 
 public class Hauptmenue extends Application {
 	
@@ -25,6 +26,7 @@ public class Hauptmenue extends Application {
 	private Stage mainStage;
 	
 	public Hauptmenue screenscontroller;
+	public Behandlungsuche_Behandlungsdaten behandlungTOFuerPflegen;
 	
 //	public MainMenueController ctrlmain;
 //	public BehandlungsfallPflegenController ctrlpflegen;
