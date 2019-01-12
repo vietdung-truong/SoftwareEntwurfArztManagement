@@ -30,7 +30,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-
+import javafx.scene.control.cell.TextFieldTableCell;
 import awk.entity.*;
 import awk.usecase.impl.*;
 
@@ -138,7 +138,10 @@ public class BehandlungsfallPflegenController{
     public void initialize()  {  	
     	
 //    	t_behandlungsID.setText(behandlung.getNr());
-    	
+    	tb_leistungen.setEditable(true);
+    	tabc_erlaeuterung.setEditable(true);
+    	tabc_erlaeuterung.setCellFactory(TextFieldTableCell.forTableColumn());
+ 
     	// erstellt Tabelle 
     	tabc_leistungsname.setCellValueFactory(cellData -> cellData.getValue().getLeistungsname());
     	tabc_erlaeuterung.setCellValueFactory(cellData -> cellData.getValue().getErlauterung()); 
