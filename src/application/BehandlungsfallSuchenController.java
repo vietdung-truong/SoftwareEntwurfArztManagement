@@ -112,6 +112,7 @@ public class BehandlungsfallSuchenController {
 		
 		//FUNKTION ERGAENZEN: DATEN AUS TABELLE ZIEHEN------------------------------------------------------------------------!!!!!!!!!!!!!!
 		
+		
     	screencontroller.anzeigen(Hauptmenue.BHFPFLEGE);	    	
     }
 	
