@@ -8,6 +8,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.xml.sax.SAXException;
+
+import application.tools.XMLParser;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -90,13 +95,13 @@ public class BehandlungsfallPflegenController{
     //Anzeige der Stammdaten des Patienten sind unnötig an dieser Stelle.
     //Hier müssen die Leistungen in der Tabelle abgebildet werden (LeistungsID, Leistungsname, Erklärung,  etc.)
     @FXML
-    private TableView<Behandlungsuche_Behandlungsdaten> tb_leistungen;
+    private TableView<Leistung> tb_leistungen;
     @FXML
-    private TableColumn<Behandlungsuche_Behandlungsdaten, String> tabc_leistungsname;
+    private TableColumn<Leistung, String> tabc_leistungsname;
     @FXML
-    private TableColumn<Behandlungsuche_Behandlungsdaten, String> tabc_erlaeuterung;
+    private TableColumn<Leistung, String> tabc_erlaeuterung;
     
-	private ObservableList<Behandlungsuche_Behandlungsdaten> leistungsdaten = FXCollections.observableArrayList();
+	
 
 
 	
@@ -122,39 +127,52 @@ public class BehandlungsfallPflegenController{
     
     private Behandlungsuche_Behandlungsdaten behandlung;
     
+    private ObservableList<Leistung> leistungsdaten = FXCollections.observableArrayList();
+    
     private Hauptmenue screencontroller;
     
     public void setScreenController (Hauptmenue screencontroller) {
     	this.screencontroller = screencontroller;
     }
     
-    public void initialize()  {
+    public void initialize()  {  	
     	
 //    	t_behandlungsID.setText(behandlung.getNr());
-//    	
-//    	// erstellt Tabelle 
-//    	tabc_nachname.setCellValueFactory(cellData -> cellData.getValue().nachnameProperty());
-//    	tabc_vorname.setCellValueFactory(cellData -> cellData.getValue().vornameProperty()); 
-//    	tabc_str.setCellValueFactory(cellData -> cellData.getValue().strProperty());
-//    	tabc_nr.setCellValueFactory(cellData -> cellData.getValue().nrProperty());
-//    	tabc_plz.setCellValueFactory(cellData -> cellData.getValue().plzProperty());
-//    	tabc_ort.setCellValueFactory(cellData -> cellData.getValue().ortProperty());
-//    	tabc_geschlecht.setCellValueFactory(cellData -> cellData.getValue().geschlechtProperty());
-//    	tabc_ustid.setCellValueFactory(cellData -> cellData.getValue().ustidProperty());
-//    	
-//    	tb_Namen.setItems(show());
-//    }
-
-//    public ObservableList<Behandlungsuche_Behandlungsdaten> show() {
-//    	
-//    	// hier Übertragen der Leistungen
-//    	return behandlung.leistungen();
+    	
+    	// erstellt Tabelle 
+    	tabc_leistungsname.setCellValueFactory(cellData -> cellData.getValue().getLeistungsname());
+    	tabc_erlaeuterung.setCellValueFactory(cellData -> cellData.getValue().getErlauterung()); 
+    	
+	}
+    
+    
+    
+    
+    public void setBehandlung(Behandlungsuche_Behandlungsdaten bh) {
+    	this.behandlung = bh; 
+    	t_behandlungsID.setText(behandlung.behandlungsIDProperty().get());
+    	t_datum.setText(behandlung.datumProperty().get());
+    	t_LANR.setText("Liegt in anderer Komponente");
+    	t_arzt.setText(behandlung.arztProperty().get());
+    	t_patientID.setText("Liegt in anderer komponente");
+    	t_patientName.setText(behandlung.patientProperty().get());
+    	
     }
     
-    
-    
-    public void setBehandlung(Behandlungsuche_Behandlungsdaten behandlung) {
-    	this.behandlung = behandlung; 
+    public void setLeistungen(Behandlungsuche_Behandlungsdaten behandlung) {
+    	try {
+			leistungsdaten = XMLParser.getXML(behandlung.leistungenProperty().get());
+		} catch (SAXException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ParserConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	tb_leistungen.setItems(leistungsdaten);
     }
     
     public void abbrechen() {

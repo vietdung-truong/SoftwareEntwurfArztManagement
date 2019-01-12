@@ -1,30 +1,51 @@
 package application;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 public class Leistung {
-	private String Leistungsname;
-	private String Erlauterung;
+	private StringProperty Leistungsname;
+	private StringProperty Erlauterung;
 	
 	
 	
 	
 	public Leistung(String leistungsname, String erlauterung) {
 		super();
-		Leistungsname = leistungsname;
-		Erlauterung = erlauterung;
+		Leistungsname = new SimpleStringProperty(leistungsname);
+		Erlauterung = new SimpleStringProperty(erlauterung);
 	}
-	
-	public String getLeistungsname() {
+
+
+
+
+	public StringProperty getLeistungsname() {
 		return Leistungsname;
 	}
-	public String getErlauterung() {
+
+
+
+
+	public StringProperty getErlauterung() {
 		return Erlauterung;
 	}
+
+
+
+
 	public void setLeistungsname(String leistungsname) {
-		Leistungsname = leistungsname;
+		Leistungsname = new SimpleStringProperty(leistungsname);
 	}
+
+
+
 	public void setErlauterung(String erlauterung) {
-		Erlauterung = erlauterung;
+		Erlauterung = new SimpleStringProperty(erlauterung);
 	}
+	
+	
+	
+	
 	
 	
 

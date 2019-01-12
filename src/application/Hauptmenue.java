@@ -28,12 +28,13 @@ public class Hauptmenue extends Application {
 	public Hauptmenue screenscontroller;
 	public Behandlungsuche_Behandlungsdaten behandlungTOFuerPflegen;
 	
-//	public MainMenueController ctrlmain;
-//	public BehandlungsfallPflegenController ctrlpflegen;
-//	public BehandlungsfallSuchenController ctrlsuchen;	
+	private MainMenueController ctrlmain;
+	private BehandlungsfallPflegenController ctrlbhfpflege ;
+	private BehandlungsfallSuchenController ctrlbhfsuche;	
 	
 	@Override
 	public void start(Stage primaryStage) {
+		behandlungTOFuerPflegen = new Behandlungsuche_Behandlungsdaten(0, "", "", "", "", "");
 		
 		this.mainStage = primaryStage;
 		
@@ -51,14 +52,14 @@ public class Hauptmenue extends Application {
 			Parent bhfpflegen_pane = (Parent)loader.load();
 			this.bhfpflege = new Scene(bhfpflegen_pane,900,800);
 			this.bhfpflege.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			BehandlungsfallPflegenController ctrlbhfpflege = loader.getController();
+			ctrlbhfpflege = loader.getController();
 			ctrlbhfpflege.setScreenController(this);
 			
 			loader = new FXMLLoader(getClass().getResource("/application/BehandlungsfallSuchen.fxml"));
 			Parent bhfsuche_pane = (Parent)loader.load();
 			this.bhfsuche = new Scene(bhfsuche_pane,700,500);
 			this.bhfsuche.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			BehandlungsfallSuchenController ctrlbhfsuche = loader.getController();
+			ctrlbhfsuche = loader.getController();
 			ctrlbhfsuche.setScreenController(this);
 			
 			anzeigen(Hauptmenue.MAINMENUE);
@@ -78,8 +79,8 @@ public class Hauptmenue extends Application {
 			case Hauptmenue.BHFSUCHE: mainStage.setScene(bhfsuche);
 				break;
 			case Hauptmenue.BHFPFLEGE: mainStage.setScene(bhfpflege); 
-				//ctrlbhfpflege.setBehandlung(ctrlbhfsuche.getBehandlung());
-				
+				ctrlbhfpflege.setLeistungen(behandlungTOFuerPflegen);
+				ctrlbhfpflege.setBehandlung(behandlungTOFuerPflegen);
 				break;
 		}
 		
