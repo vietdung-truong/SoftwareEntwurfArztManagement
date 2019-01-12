@@ -25,11 +25,16 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
+import application.Behandlungsuche_Behandlungsdaten;
+import application.Leistung;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 
 
 public class XMLParser {
 
-	public static Map<String, String> getXML(String Leistung)
+	public static ObservableList<Leistung> getXML(String Leistung)
 			throws SAXException, IOException, ParserConfigurationException {
 
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -43,7 +48,8 @@ public class XMLParser {
 		//comment
 
 		NodeList nList = doc.getElementsByTagName("Leistung");
-		Map<String, String> map = new HashMap<>();
+		ObservableList<Leistung> leistungsdaten = FXCollections.observableArrayList();
+
 
 		// Parsed Liste aus Leistungen
 		for (int i = 0; i < nList.getLength(); i++) {
@@ -61,17 +67,19 @@ public class XMLParser {
 				String name = elem.getAttribute("Leistungsname");
 
 				String erläuterung = elem.getAttribute("Erläuterung");
+				
+				Leistung leistung = new Leistung(name, erläuterung);
 
-				map.put(name, erläuterung);
+				leistungsdaten.add(leistung);
 
 				System.out.printf("Leistungname: %s%n", name);
 				System.out.printf("Leistung Erläuterung: %s%n", erläuterung);
 			}
 		}
-		return map;
+		return leistungsdaten;
 	}
 
-	public static String setXML(Map<String, String> map) throws ParserConfigurationException,
+	public static String setXML(ObservableList<Leistung> liste) throws ParserConfigurationException,
     TransformerException  {
 
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -81,9 +89,9 @@ public class XMLParser {
         Element root = doc.createElement("Leistungen");
         doc.appendChild(root);
 
-        for (Map.Entry<String, String> entry : map.entrySet())
+        for (Leistung entry : liste)
         {
-        	 root.appendChild(createUser(doc, entry.getKey(), entry.getValue()));
+        	 root.appendChild(createUser(doc, entry.getLeistungsname(), entry.getErlauterung()));
             
         }
         // für commit
