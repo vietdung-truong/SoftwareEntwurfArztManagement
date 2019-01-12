@@ -67,6 +67,6 @@
         </items>
       </SplitPane>
       <Button fx:id="abortButton" layoutX="549.0" layoutY="22.0" mnemonicParsing="false" onAction="#abbrechen" prefHeight="64.0" prefWidth="161.0" text="Abbrechen" />
-      <Button layoutX="251.0" layoutY="652.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="266.0" text="Leistungsänderungen übernehmen" />
+      <Button layoutX="251.0" layoutY="652.0" mnemonicParsing="false" onAction="#speichern" prefHeight="48.0" prefWidth="266.0" text="Leistungsänderungen übernehmen" />
    </children>
 </AnchorPane>
