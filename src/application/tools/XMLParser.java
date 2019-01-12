@@ -91,7 +91,7 @@ public class XMLParser {
 
         for (Leistung entry : liste)
         {
-        	 root.appendChild(createUser(doc, entry.getLeistungsname(), entry.getErlauterung()));
+        	 root.appendChild(createUser(doc, entry.getLeistungsname().get(), entry.getErlauterung().get()));
             
         }
         // für commit

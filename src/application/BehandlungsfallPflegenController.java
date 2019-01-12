@@ -9,6 +9,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
 
 import org.xml.sax.SAXException;
 
@@ -33,6 +34,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.TextFieldTableCell;
 import awk.entity.*;
 import awk.usecase.impl.*;
+import awk.usecases.IBehandlungpflegenFactory;
+import awk.usecase.*;
 
 
 public class BehandlungsfallPflegenController{
@@ -54,7 +57,9 @@ public class BehandlungsfallPflegenController{
 	    @FXML
 	    private Label t_patientID;
 	    @FXML
-	    private Label t_patientName;   
+	    private Label t_patientName;  
+	    @FXML
+	    private Label t_behandlungsart;
 	    @FXML
 	    private Button b_abbrechen;
 	    
@@ -159,6 +164,7 @@ public class BehandlungsfallPflegenController{
     	t_arzt.setText(behandlung.arztProperty().get());
     	t_patientID.setText("Liegt in anderer komponente");
     	t_patientName.setText(behandlung.patientProperty().get());
+    	t_behandlungsart.setText(behandlung.behandlungsartProperty().get());
     	
     }
     
@@ -181,6 +187,37 @@ public class BehandlungsfallPflegenController{
     public void abbrechen() {
     	screencontroller.anzeigen(Hauptmenue.MAINMENUE);	    	
     }
-	
+    
+    public void speichern() {
+    	ObservableList<Leistung> updLeistungen = FXCollections.observableArrayList();
+    	
+    	for (int i = 0; i < tb_leistungen.getHeight(); i++) {
+    		Leistung leistung = new Leistung(tabc_leistungsname.getCellData(i), tabc_erlaeuterung.getCellData(i));
+    		System.out.println(leistung);
+    		updLeistungen.add(leistung);
+		}
+    	try {
+			String xml = XMLParser.setXML(updLeistungen);
+			IBehandlungpflegenFactory factory = new BehandlungpflegenFactory();
+			factory.getBehandlungPflegen().behandlungsdatenSpeichern(
+					Integer.parseInt(t_behandlungsID.getText()),
+					t_datum.getText(),
+					xml,
+					t_arzt.getText(),
+					t_patientName.getText(),
+					t_behandlungsart.getText()
+			);
+		} catch (ParserConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (TransformerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+    	
+    	
+    	
+    }
 }
 
