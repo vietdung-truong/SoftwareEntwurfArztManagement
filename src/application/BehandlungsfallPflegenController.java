@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javax.swing.plaf.synth.SynthSeparatorUI;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 
@@ -190,14 +191,16 @@ public class BehandlungsfallPflegenController{
     
     public void speichern() {
     	ObservableList<Leistung> updLeistungen = FXCollections.observableArrayList();
-    	
-    	for (int i = 0; i < tb_leistungen.getHeight(); i++) {
+    	int i = 0;
+    	while (tabc_leistungsname.getCellData(i) != null) {
     		Leistung leistung = new Leistung(tabc_leistungsname.getCellData(i), tabc_erlaeuterung.getCellData(i));
-    		System.out.println(leistung);
+    		System.out.println(leistung.getLeistungsname().get()+ leistung.getErlauterung().get() + " _____DEBUG!");
     		updLeistungen.add(leistung);
+    		i++;
 		}
     	try {
 			String xml = XMLParser.setXML(updLeistungen);
+//			System.out.println(xml);
 			IBehandlungpflegenFactory factory = new BehandlungpflegenFactory();
 			factory.getBehandlungPflegen().behandlungsdatenSpeichern(
 					Integer.parseInt(t_behandlungsID.getText()),
@@ -207,6 +210,12 @@ public class BehandlungsfallPflegenController{
 					t_patientName.getText(),
 					t_behandlungsart.getText()
 			);
+			System.out.println(Integer.parseInt(t_behandlungsID.getText()) + 
+					t_datum.getText() +
+					xml +
+					t_arzt.getText() +
+					t_patientName.getText() +
+					t_behandlungsart.getText() + "Übertragen in Factory");
 		} catch (ParserConfigurationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
