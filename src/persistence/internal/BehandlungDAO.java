@@ -29,32 +29,32 @@ public class BehandlungDAO implements IBehandlungDAO {
 		String patient = behandlungTO.getPatient();
 		String Behandlungsart = behandlungTO.getBehandlungsart();
 
-		//Transform the date format
-		final String OLD_FORMAT = "dd.MM.yyyy";
-		final String NEW_FORMAT = "yyyy-MM-dd";
-
-		try {
-			String oldDateString = datum;
-			String newDateString;
-
-			SimpleDateFormat sdf = new SimpleDateFormat(OLD_FORMAT);
-			Date d;
-			d = sdf.parse(oldDateString);
-			sdf.applyPattern(NEW_FORMAT);
-			newDateString = sdf.format(d);
-			datum = newDateString;
-
-		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+//		//Transform the date format
+//		final String OLD_FORMAT = "dd.MM.yyyy";
+//		final String NEW_FORMAT = "yyyy-MM-dd";
+//
+//		try {
+//			String oldDateString = datum;
+//			String newDateString;
+//
+//			SimpleDateFormat sdf = new SimpleDateFormat(OLD_FORMAT);
+//			Date d;
+//			d = sdf.parse(oldDateString);
+//			sdf.applyPattern(NEW_FORMAT);
+//			newDateString = sdf.format(d);
+//			datum = newDateString;
+//
+//		} catch (ParseException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		}
 
 		Connection aConnection = Persistence.getConnection();
 		
 		try {
 			Persistence.executeUpdateStatement(aConnection,
 
-					"update behandlung set"
+					"update behandlung set "
 					+ "arzt = '" + arzt + "', "
 					+ "patient = '" + patient + "', "
 					+ "datum = TO_DATE('" + datum + "', 'YYYY-MM-DD'), " //hier müssen wir noch Datumsformat abstimmen

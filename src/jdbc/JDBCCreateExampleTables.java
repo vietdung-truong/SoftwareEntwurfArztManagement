@@ -34,10 +34,13 @@ public class JDBCCreateExampleTables {
 			
 			
 			  //Hier wird die Tabelle erstellt
+			
+			String sql = "drop table behandlung";
+			stmt.executeUpdate(sql);
 			  
-			  System.out.println("Creating a Table..."); String sql =
+			  System.out.println("Creating a Table...");  sql =
 			  "CREATE TABLE BEHANDLUNG (ID INTEGER not NULL AUTO_INCREMENT, DATUM DATE, " +
-			  "LEISTUNGEN VARCHAR(255), ARZT VARCHAR(20), PATIENT VARCHAR (20), " +
+			  "LEISTUNGEN VARCHAR(2000), ARZT VARCHAR(20), PATIENT VARCHAR (20), " +
 			  "BEHANDLUNGSART VARCHAR(20),  PRIMARY KEY (ID))"; stmt.executeUpdate(sql);
 			  System.out.println("Table Behandlung has been created");
 			  

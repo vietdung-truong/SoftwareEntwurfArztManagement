@@ -13,7 +13,9 @@ public class BehandlungPflegen {
 	public void behandlungsdatenSpeichern(int behandlungsID, String datum, String leistungen, String arzt,String patient, String behandlungsart) {
 		 BehandlungManager manager = new BehandlungManager();
 		 Behandlungsart bh;
-		 
+		 bh = Behandlungsart.privat;
+		 Behandlung behandlung = new Behandlung (behandlungsID,datum,leistungen,arzt,patient,bh);
+		 manager.BehandlungAnlegen(behandlung);
 		 
 		 
 		 // Überprüfung valider Eingabe auch möglich
@@ -27,17 +29,20 @@ public class BehandlungPflegen {
 		 
 		 
 		 
-		 if (behandlungsart == Behandlungsart.PRIVAT.toString()) {
-				 bh = Behandlungsart.PRIVAT;
-				 Behandlung behandlung = new Behandlung (behandlungsID,datum,leistungen,arzt,patient,bh);
-				 manager.BehandlungAnlegen(behandlung);
-		 }else if(behandlungsart == Behandlungsart.KASSE.toString()) {
-			 bh = Behandlungsart.KASSE;
-			 Behandlung behandlung = new Behandlung (behandlungsID,datum,leistungen,arzt,patient,bh);
-			 manager.BehandlungAnlegen(behandlung);
-		 }	 
+//		 if (behandlungsart == "privat") {
+//				 bh = Behandlungsart.privat;
+//				 Behandlung behandlung = new Behandlung (behandlungsID,datum,leistungen,arzt,patient,bh);
+//				 manager.BehandlungAnlegen(behandlung);
+//		 }else if(behandlungsart == "kasse") {
+//			 bh = Behandlungsart.kasse;
+//			 Behandlung behandlung = new Behandlung (behandlungsID,datum,leistungen,arzt,patient,bh);
+//			 manager.BehandlungAnlegen(behandlung);
+//		 }else {
+//			 System.out.println(Behandlungsart.privat.toString() + Behandlungsart.privat +"Hallo");
+//			 System.out.println("Arbeitsverweigerung!!!!!!!!!!1");
+//		 }
 		
-		 
+		
 		 
 		 
 		 
