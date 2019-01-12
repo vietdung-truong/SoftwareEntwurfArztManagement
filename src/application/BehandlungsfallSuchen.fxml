@@ -11,7 +11,7 @@
 <AnchorPane minHeight="400.0" minWidth="400.0" prefHeight="499.0" prefWidth="668.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.BehandlungsfallSuchenController">
    <children>
       <Button layoutX="39.0" layoutY="40.0" mnemonicParsing="false" onAction="#suche" prefHeight="64.0" prefWidth="129.0" text="Suchen" />
-      <TextField fx:id="t_sucheDatum" layoutX="54.0" layoutY="182.0" prefHeight="25.0" prefWidth="274.0" text="(dd.mm.yyyy) " />
+      <TextField fx:id="t_sucheDatum" layoutX="54.0" layoutY="182.0" prefHeight="25.0" prefWidth="274.0" text="01.01.2019" />
       <Label layoutX="52.0" layoutY="148.0" prefHeight="34.0" prefWidth="258.0" text="Behandlungsfalldatum: ">
          <font>
             <Font size="15.0" />

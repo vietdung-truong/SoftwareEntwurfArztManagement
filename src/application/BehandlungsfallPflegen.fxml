@@ -11,12 +11,12 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane fx:id="bfallPflegenPane" prefHeight="557.0" prefWidth="754.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.BehandlungsfallPflegenController">
+<AnchorPane fx:id="bfallPflegenPane" prefHeight="714.0" prefWidth="754.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.BehandlungsfallPflegenController">
    <children>
       <Button layoutX="43.0" layoutY="22.0" mnemonicParsing="false" onAction="#loadBFallSuchen" prefHeight="64.0" prefWidth="161.0" text="Behandlungsfall suchen" />
       <SplitPane layoutY="100.0" orientation="VERTICAL" prefHeight="536.0" prefWidth="754.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="286.0" prefWidth="752.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="450.0" prefWidth="752.0">
                <children>
                   <GridPane layoutX="52.0" layoutY="34.0" prefHeight="197.0" prefWidth="686.0">
                     <columnConstraints>
@@ -46,7 +46,7 @@
                         <Label fx:id="t_patientName" prefHeight="17.0" prefWidth="240.0" text="_" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                      </children>
                   </GridPane>
-                  <TableView fx:id="tb_leistungen" layoutY="267.0" prefHeight="270.0" prefWidth="752.0">
+                  <TableView fx:id="tb_leistungen" layoutY="267.0" prefHeight="268.0" prefWidth="752.0">
                     <columns>
                       <TableColumn fx:id="tabc_leistungsname" prefWidth="75.0" text="Leistung" />
                       <TableColumn fx:id="tabc_erlaeuterung" prefWidth="75.0" text="Erläuterung" />
@@ -64,5 +64,6 @@
         </items>
       </SplitPane>
       <Button fx:id="abortButton" layoutX="549.0" layoutY="22.0" mnemonicParsing="false" onAction="#abbrechen" prefHeight="64.0" prefWidth="161.0" text="Abbrechen" />
+      <Button layoutX="251.0" layoutY="652.0" mnemonicParsing="false" onAction="#updateLeistung" prefHeight="48.0" prefWidth="266.0" text="Leistungsänderungen übernehmen" />
    </children>
 </AnchorPane>
