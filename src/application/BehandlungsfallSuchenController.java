@@ -34,8 +34,6 @@ public class BehandlungsfallSuchenController {
 	
 	private ObservableList<Behandlungsuche_Behandlungsdaten> behandlungsdaten = FXCollections.observableArrayList();
 
-	private Behandlungsuche_Behandlungsdaten behandlung;
-	
 	private Hauptmenue screencontroller;
 	
 	private Collection<BehandlungTO> behandlungenTO = new ArrayList<BehandlungTO>(); 
@@ -54,7 +52,7 @@ public class BehandlungsfallSuchenController {
 					&& event.getClickCount() == 2) {
 					
 					Behandlungsuche_Behandlungsdaten clickedRow = row.getItem();
-					System.out.println(clickedRow);
+					System.out.println(clickedRow.behandlungsIDProperty().get() + "  " + clickedRow.behandlungsartProperty().get()+ "  " + clickedRow.leistungenProperty().get());
 					auswaehlen(clickedRow);
 				}
 			});
@@ -98,32 +96,30 @@ public class BehandlungsfallSuchenController {
 
 	}
 	
-	public void auswaehlen(Behandlungsuche_Behandlungsdaten behandlung) {
-//		ArrayList al = new ArrayList<>();
-//
-//		TablePosition pos;
-//		
-//		pos = tb_Behandlungen.getSelectionModel().getSelectedCells().get(0);
-//		System.out.println(pos);
-//		for (int j = 0; j < behandlungsdaten.size(); j++) {
-//			Behandlungsuche_Behandlungsdaten to = behandlungsdaten.iterator().next();
-//			if (to.getBehandlungsID().toString() == pos.toString()) {
-//				screencontroller.behandlungTOFuerPflegen = to;
-//			}
-//		}
-//		
+	public void auswaehlen(Behandlungsuche_Behandlungsdaten clickedRow) {
 		
-		screencontroller.behandlungTOFuerPflegen = behandlung;
+		int j = 0; 
+		while (j < behandlungsdaten.size()) {
+			Behandlungsuche_Behandlungsdaten b = behandlungsdaten.iterator().next();
+			if (clickedRow.behandlungsIDProperty().get() == b.behandlungsIDProperty().get()) {
+				screencontroller.behandlungTOFuerPflegen = b;
+				System.out.println(b);
+				
+				j = behandlungsdaten.size();
+			}
+			j++;
+		}
+		
 		//FUNKTION ERGAENZEN: DATEN AUS TABELLE ZIEHEN------------------------------------------------------------------------!!!!!!!!!!!!!!
-		System.out.println(behandlung);
+		
     	screencontroller.anzeigen(Hauptmenue.BHFPFLEGE);	    	
     }
 	
-	public Behandlungsuche_Behandlungsdaten getBehandlung() {
-    	return behandlung;    	
-    }
+//	public Behandlungsuche_Behandlungsdaten getBehandlung() {
+//    	return behandlung;    	
+//    }
     
-	@FXML
+//	@FXML
 	public void sucheAbbrechen() {
     	screencontroller.anzeigen(Hauptmenue.BHFPFLEGE); 
     }

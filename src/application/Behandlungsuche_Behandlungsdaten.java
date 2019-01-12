@@ -24,29 +24,6 @@ public class Behandlungsuche_Behandlungsdaten {
 		this.leistungen = new SimpleStringProperty(leistungen);
 	}
 
-	public StringProperty getBehandlungsID() {
-		return behandlungsID;
-	}
-
-	public StringProperty getDatum() {
-		return datum;
-	}
-
-	public StringProperty getArzt() {
-		return arzt;
-	}
-
-	public StringProperty getPatient() {
-		return patient;
-	}
-
-	public StringProperty getBehandlungsart() {
-		return behandlungsart;
-	}
-
-	public StringProperty getLeistungen() {
-		return leistungen;
-	}
 
 	public void setBehandlungsID(int behandlungsID) {
 		String s = "" + behandlungsID;
