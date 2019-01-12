@@ -53,6 +53,12 @@ public class BehandlungsfallPflegenController{
 	    @FXML
 	    private Button b_abbrechen;
 	    
+	    String testLeistung = "<Leistungen> \r\n" + 
+	    		"  <Leistung Leistungsname=\"Heilung 1\" Erläuterung=\"Test Heilung 1\" /> \r\n" + 
+	    		"  <Leistung Leistungsname=\"Heilung 2\" Erläuterung=\"Test Heilung 2\" /> \r\n" + 
+	    		"  <Leistung Leistungsname=\"Heilung 3\" Erläuterung=\"Test Heilung 3\" /> \r\n" + 
+	    		"</Leistungen>";
+	    
 
 	/*
 	 * @FXML private void loadBFallSuchen (ActionEvent event) throws IOException {
@@ -84,23 +90,32 @@ public class BehandlungsfallPflegenController{
     //Anzeige der Stammdaten des Patienten sind unnötig an dieser Stelle.
     //Hier müssen die Leistungen in der Tabelle abgebildet werden (LeistungsID, Leistungsname, Erklärung,  etc.)
     @FXML
-    private TableView<Behandlungsuche_Behandlungsdaten> tb_Namen;
+    private TableView<Behandlungsuche_Behandlungsdaten> tb_leistungen;
     @FXML
-    private TableColumn<Behandlungsuche_Behandlungsdaten, String> tabc_nachname;
+    private TableColumn<Behandlungsuche_Behandlungsdaten, String> tabc_leistungsname;
     @FXML
-    private TableColumn<Behandlungsuche_Behandlungsdaten, String> tabc_vorname;
-    @FXML
-    private TableColumn<Behandlungsuche_Behandlungsdaten, String> tabc_str;
-    @FXML
-    private TableColumn<Behandlungsuche_Behandlungsdaten, String> tabc_nr;
-    @FXML
-    private TableColumn<Behandlungsuche_Behandlungsdaten, String> tabc_plz;
-    @FXML
-    private TableColumn<Behandlungsuche_Behandlungsdaten, String> tabc_ort;
-    @FXML
-    private TableColumn<Behandlungsuche_Behandlungsdaten, String> tabc_geschlecht;
-    @FXML
-    private TableColumn<Behandlungsuche_Behandlungsdaten, String> tabc_ustid;
+    private TableColumn<Behandlungsuche_Behandlungsdaten, String> tabc_erlaeuterung;
+    
+	private ObservableList<Behandlungsuche_Behandlungsdaten> leistungsdaten = FXCollections.observableArrayList();
+
+
+	
+    /* Unnoetige Spalten
+	 * @FXML private TableColumn<Behandlungsuche_Behandlungsdaten, String> tabc_str;
+	 * 
+	 * @FXML private TableColumn<Behandlungsuche_Behandlungsdaten, String> tabc_nr;
+	 * 
+	 * @FXML private TableColumn<Behandlungsuche_Behandlungsdaten, String> tabc_plz;
+	 * 
+	 * @FXML private TableColumn<Behandlungsuche_Behandlungsdaten, String> tabc_ort;
+	 * 
+	 * @FXML private TableColumn<Behandlungsuche_Behandlungsdaten, String>
+	 * tabc_geschlecht;
+	 * 
+	 * @FXML private TableColumn<Behandlungsuche_Behandlungsdaten, String>
+	 * tabc_ustid;
+	 */
+    
     //Leistung hat: Name / beschreibung
     
     
@@ -113,8 +128,8 @@ public class BehandlungsfallPflegenController{
     	this.screencontroller = screencontroller;
     }
     
-//    public void initialize()  {
-//    	
+    public void initialize()  {
+    	
 //    	t_behandlungsID.setText(behandlung.getNr());
 //    	
 //    	// erstellt Tabelle 
@@ -134,7 +149,7 @@ public class BehandlungsfallPflegenController{
 //    	
 //    	// hier Übertragen der Leistungen
 //    	return behandlung.leistungen();
-//    }
+    }
     
     
     

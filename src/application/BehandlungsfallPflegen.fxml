@@ -46,12 +46,10 @@
                         <Label fx:id="t_patientName" prefHeight="17.0" prefWidth="240.0" text="_" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                      </children>
                   </GridPane>
-                  <TableView layoutY="267.0" prefHeight="270.0" prefWidth="752.0">
+                  <TableView fx:id="tb_leistungen" layoutY="267.0" prefHeight="270.0" prefWidth="752.0">
                     <columns>
-                      <TableColumn prefWidth="75.0" text="#ID" />
-                      <TableColumn prefWidth="75.0" text="Leistung" />
-                      <TableColumn prefWidth="75.0" text="iwas" />
-                      <TableColumn prefWidth="75.0" text="iwas" />
+                      <TableColumn fx:id="tabc_leistungsname" prefWidth="75.0" text="Leistung" />
+                      <TableColumn fx:id="tabc_erlaeuterung" prefWidth="75.0" text="Erläuterung" />
 
                     </columns>
                      <columnResizePolicy>
