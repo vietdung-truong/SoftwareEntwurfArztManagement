@@ -20,7 +20,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -41,6 +44,8 @@ import awk.usecase.*;
 
 public class BehandlungsfallPflegenController{
 
+	
+		// ------- Deklaration der BehandlungsfallPflegen-Dialog-Elemente ----------------------------------------------------
 		@FXML
 		private Button abortButton;
 	
@@ -95,11 +100,6 @@ public class BehandlungsfallPflegenController{
 
     
     // ----- Tabellen Inhalt ----------------------------------------------------
-    
-    //Klären-----------------------------------------------------------------------------------------------!!
-    //Sinn?
-    //Anzeige der Stammdaten des Patienten sind unnötig an dieser Stelle.
-    //Hier müssen die Leistungen in der Tabelle abgebildet werden (LeistungsID, Leistungsname, Erklärung,  etc.)
     @FXML
     private TableView<Leistung> tb_leistungen;
     @FXML
@@ -107,30 +107,9 @@ public class BehandlungsfallPflegenController{
     @FXML
     private TableColumn<Leistung, String> tabc_erlaeuterung;
     
-	
 
-
-	
-    /* Unnoetige Spalten
-	 * @FXML private TableColumn<Behandlungsuche_Behandlungsdaten, String> tabc_str;
-	 * 
-	 * @FXML private TableColumn<Behandlungsuche_Behandlungsdaten, String> tabc_nr;
-	 * 
-	 * @FXML private TableColumn<Behandlungsuche_Behandlungsdaten, String> tabc_plz;
-	 * 
-	 * @FXML private TableColumn<Behandlungsuche_Behandlungsdaten, String> tabc_ort;
-	 * 
-	 * @FXML private TableColumn<Behandlungsuche_Behandlungsdaten, String>
-	 * tabc_geschlecht;
-	 * 
-	 * @FXML private TableColumn<Behandlungsuche_Behandlungsdaten, String>
-	 * tabc_ustid;
-	 */
     
-    //Leistung hat: Name / beschreibung
-    
-    
-    
+    // ------ Controller-Objekte -------------------------------------------------
     private Behandlungsuche_Behandlungsdaten behandlung;
     
     private ObservableList<Leistung> leistungsdaten = FXCollections.observableArrayList();
@@ -141,9 +120,12 @@ public class BehandlungsfallPflegenController{
     	this.screencontroller = screencontroller;
     }
     
+    
+
     public void initialize()  {  	
     	
 //    	t_behandlungsID.setText(behandlung.getNr());
+        //Ermöglicht Tabelleneinträge der Erläuterungsspalte zu ändern
     	tb_leistungen.setEditable(true);
     	tabc_erlaeuterung.setEditable(true);
     	tabc_erlaeuterung.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -153,10 +135,8 @@ public class BehandlungsfallPflegenController{
     	tabc_erlaeuterung.setCellValueFactory(cellData -> cellData.getValue().getErlauterung()); 
     	
 	}
-    
-    
-    
-    
+
+    //Füllt die Labels des Dialogs "Behandlungsfall pflegen" mit Daten aus dem ausgewählten Objekt der Behandlungssuche
     public void setBehandlung(Behandlungsuche_Behandlungsdaten bh) {
     	this.behandlung = bh; 
     	t_behandlungsID.setText(behandlung.behandlungsIDProperty().get());
@@ -165,9 +145,9 @@ public class BehandlungsfallPflegenController{
     	t_arzt.setText(behandlung.arztProperty().get());
     	t_patientID.setText("Liegt in anderer komponente");
     	t_patientName.setText(behandlung.patientProperty().get());
-    	t_behandlungsart.setText(behandlung.behandlungsartProperty().get());
-    	
+    	t_behandlungsart.setText(behandlung.behandlungsartProperty().get());	
     }
+    
     
     public void setLeistungen(Behandlungsuche_Behandlungsdaten behandlung) {
     	try {
@@ -185,10 +165,21 @@ public class BehandlungsfallPflegenController{
     	tb_leistungen.setItems(leistungsdaten);
     }
     
+    //Gehört zum "Abbrechen"-Button: Dialogwechsel zum Hauptmenü, wenn Warnhinweis mit "JA" bestätigt wird. 
+    //Änderungen in Leistungserläuterung(en) werden nur übernommen, wenn vorher der Button "Leistungsänderungen übernehmen" geklickt wurde.
     public void abbrechen() {
-    	screencontroller.anzeigen(Hauptmenue.MAINMENUE);	    	
+    	Alert alert = new Alert(AlertType.CONFIRMATION, "Bitte Eingaben überprüfen", ButtonType.YES, ButtonType.CANCEL);
+    	alert.setTitle("Warnhinweis");
+    	alert.setHeaderText("Nicht gespeicherte Änderungen werden verworfen!");
+    	alert.showAndWait();
+
+    	if (alert.getResult() == ButtonType.YES) {
+    	   	screencontroller.anzeigen(Hauptmenue.MAINMENUE);
+    	}
+ 	    	
     }
     
+    //Gehört zum "Leistungsänderungen übernehmen"-Button: Überträgt alle geänderten Leistungserläuterungen in die Datenbank
     public void speichern() {
     	ObservableList<Leistung> updLeistungen = FXCollections.observableArrayList();
     	int i = 0;
@@ -210,6 +201,7 @@ public class BehandlungsfallPflegenController{
 					t_patientName.getText(),
 					t_behandlungsart.getText()
 			);
+			//Für Debug-Zwecke
 			System.out.println(Integer.parseInt(t_behandlungsID.getText()) + 
 					t_datum.getText() +
 					xml +
@@ -222,11 +214,7 @@ public class BehandlungsfallPflegenController{
 		} catch (TransformerException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-    	
-    	
-    	
-    	
+		}   	
     }
 }
 
