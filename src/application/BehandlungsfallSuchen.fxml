@@ -17,9 +17,8 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Button layoutX="249.0" layoutY="47.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="176.0" text="Auswahl anzeigen" />
       <Button layoutX="491.0" layoutY="40.0" mnemonicParsing="false" onAction="#sucheAbbrechen" prefHeight="64.0" prefWidth="129.0" text="Abbrechen" />
-      <TableView fx:id="tb_Behandlungen" layoutY="225.0" prefHeight="274.0" prefWidth="668.0">
+      <TableView fx:id="tb_Behandlungen" layoutX="6.0" layoutY="240.0" prefHeight="259.0" prefWidth="655.0">
         <columns>
           <TableColumn fx:id="tabc_behandlungsID" prefWidth="75.0" text="Behandlungs-ID" />
           <TableColumn fx:id="tabc_arzt" prefWidth="75.0" text="Arzt" />
@@ -30,5 +29,6 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
+      <Label layoutX="343.0" layoutY="186.0" text="Datumsformat: dd.mm.yyyy" />
    </children>
 </AnchorPane>

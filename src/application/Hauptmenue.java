@@ -28,7 +28,6 @@ public class Hauptmenue extends Application {
 	public Hauptmenue screenscontroller;
 	public Behandlungsuche_Behandlungsdaten behandlungTOFuerPflegen;
 	
-	private MainMenueController ctrlmain;
 	private BehandlungsfallPflegenController ctrlbhfpflege ;
 	private BehandlungsfallSuchenController ctrlbhfsuche;	
 	
@@ -41,23 +40,24 @@ public class Hauptmenue extends Application {
 		try {
 			FXMLLoader loader;
 			
+			//Die Dialoge Hauptmenue, BehandlungsfallPflegen und BehandlungsfallSuchen werden vorgeladen.		
 			loader = new FXMLLoader(getClass().getResource("/application/MainMenue.fxml"));			
 			Parent menü_pane = (Parent) loader.load();
-			this.mainmenü = new Scene(menü_pane,600,600);
+			this.mainmenü = new Scene(menü_pane,460,460);
 			this.mainmenü.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			MainMenueController ctrlmain = loader.getController();
 			ctrlmain.setScreenController(this);
 			
 			loader = new FXMLLoader(getClass().getResource("/application/BehandlungsfallPflegen.fxml"));
 			Parent bhfpflegen_pane = (Parent)loader.load();
-			this.bhfpflege = new Scene(bhfpflegen_pane,900,800);
+			this.bhfpflege = new Scene(bhfpflegen_pane,770,720);
 			this.bhfpflege.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			ctrlbhfpflege = loader.getController();
 			ctrlbhfpflege.setScreenController(this);
 			
 			loader = new FXMLLoader(getClass().getResource("/application/BehandlungsfallSuchen.fxml"));
 			Parent bhfsuche_pane = (Parent)loader.load();
-			this.bhfsuche = new Scene(bhfsuche_pane,700,500);
+			this.bhfsuche = new Scene(bhfsuche_pane,670,500);
 			this.bhfsuche.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			ctrlbhfsuche = loader.getController();
 			ctrlbhfsuche.setScreenController(this);
@@ -69,24 +69,26 @@ public class Hauptmenue extends Application {
 		}
 	}
 	
-
+	//Ermöglicht Navigation zwischen den Dialogen
 	public void anzeigen (String screen)
-	{
-		
+	{		
 		switch (screen) {
 			case Hauptmenue.MAINMENUE: mainStage.setScene(mainmenü);
-				break;
-			case Hauptmenue.BHFSUCHE: mainStage.setScene(bhfsuche);
+				mainStage.setTitle("Hauptmenü");
 				break;
 			case Hauptmenue.BHFPFLEGE: mainStage.setScene(bhfpflege); 
 				ctrlbhfpflege.setLeistungen(behandlungTOFuerPflegen);
 				ctrlbhfpflege.setBehandlung(behandlungTOFuerPflegen);
+				mainStage.setTitle("Behandlung pflegen");
 				break;
-		}
-		
+			case Hauptmenue.BHFSUCHE: mainStage.setScene(bhfsuche);
+				mainStage.setTitle("Behandlung suchen");
+				break;
+		}	
 		mainStage.sizeToScene();
 		mainStage.show();
 	}
+	
 	
 	public static void Start_Dialog() {
 		launch();

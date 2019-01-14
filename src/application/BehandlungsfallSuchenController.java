@@ -18,6 +18,7 @@ import awk.usecases.*;
 
 public class BehandlungsfallSuchenController {
 
+	// ------- Deklaration der BehandlungsfallSuchen-Dialog-Elemente ----------------------------------------------------
 	@FXML
 	private TextField t_sucheDatum;	
 	@FXML
@@ -29,8 +30,8 @@ public class BehandlungsfallSuchenController {
 	@FXML
 	private TableColumn<Behandlungsuche_Behandlungsdaten, String> tabc_patient;
 
-	// --------- Variablen für die Behandlungsdatensuche------------------------------------------------------------------------
 
+	// --------- Variablen für die Behandlungsdatensuche------------------------------------------------------------------------
 	
 	private ObservableList<Behandlungsuche_Behandlungsdaten> behandlungsdaten = FXCollections.observableArrayList();
 
@@ -38,13 +39,15 @@ public class BehandlungsfallSuchenController {
 	
 	private Collection<BehandlungTO> behandlungenTO = new ArrayList<BehandlungTO>(); 
 
+	
 	public void setScreenController(Hauptmenue screencontroller) {
 		this.screencontroller = screencontroller;
 	}
 	
 
 	public void initialize() {
-		
+
+		// Wird bei Doppelklick auf eine Tabellenzeile aufgerufen: Übernimmt die Daten der angeklickten Zeile und gibt sie zurück
 		tb_Behandlungen.setRowFactory(tv -> { 
 			TableRow<Behandlungsuche_Behandlungsdaten> row = new TableRow<>();
 			row.setOnMouseClicked(event -> { 
@@ -67,7 +70,7 @@ public class BehandlungsfallSuchenController {
     	tb_Behandlungen.setItems(behandlungsdaten);
 	}
 
-	
+	// Gehört zum "Suchen"-Button: Durchsucht die Datenbank und gibt alle Einträge mit dem gleichen Datum, wie eingegeben, aus.
 	public void suche() {
 		String datum = t_sucheDatum.getText();
 
@@ -89,16 +92,15 @@ public class BehandlungsfallSuchenController {
 						behandlungsdaten.add(behandlungdaten);
 		}
 		
-		
-
 		System.out.println("Anzahl Eintraege in Tabelle = " + behandlungsdaten.size());
-
-
 	}
+
 	
+	// Unterstützt die Methode "Initialize()": Durchsucht die doppelt-angeklickte Zeile spaltenweise nach der BehandlungsID. 
+	// Navigiert anschließend zum Dialog "BehandlungsfallPflegen"
 	public void auswaehlen(Behandlungsuche_Behandlungsdaten clickedRow) {
-		
 		int j = 0; 
+		
 		while (j < behandlungsdaten.size()) {
 			Behandlungsuche_Behandlungsdaten b = behandlungsdaten.iterator().next();
 			if (clickedRow.behandlungsIDProperty().get() == b.behandlungsIDProperty().get()) {
@@ -109,10 +111,7 @@ public class BehandlungsfallSuchenController {
 			}
 			j++;
 		}
-		
-		//FUNKTION ERGAENZEN: DATEN AUS TABELLE ZIEHEN------------------------------------------------------------------------!!!!!!!!!!!!!!
-		
-		
+				
     	screencontroller.anzeigen(Hauptmenue.BHFPFLEGE);	    	
     }
 	
@@ -120,11 +119,9 @@ public class BehandlungsfallSuchenController {
 //    	return behandlung;    	
 //    }
     
-//	@FXML
+	
 	public void sucheAbbrechen() {
     	screencontroller.anzeigen(Hauptmenue.BHFPFLEGE); 
     }
-	
-	
 	
 }
