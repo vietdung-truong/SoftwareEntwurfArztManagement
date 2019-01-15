@@ -34,7 +34,7 @@ public class Hauptmenue extends Application {
 	
 	@Override
 	public void start(Stage primaryStage) {
-		behandlungTOFuerPflegen = new Behandlungsuche_Behandlungsdaten(0, "", "", "", "", "");
+		behandlungTOFuerPflegen = new Behandlungsuche_Behandlungsdaten(0, "", "", "", "", "<Leistungen></Leistungen>");
 		
 		this.mainStage = primaryStage;
 		

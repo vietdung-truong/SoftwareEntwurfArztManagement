@@ -156,7 +156,7 @@ public class BehandlungsfallPflegenController{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			// TODO Auto-generated catch block 
 			e.printStackTrace();
 		} catch (ParserConfigurationException e) {
 			// TODO Auto-generated catch block
@@ -185,13 +185,12 @@ public class BehandlungsfallPflegenController{
     	int i = 0;
     	while (tabc_leistungsname.getCellData(i) != null) {
     		Leistung leistung = new Leistung(tabc_leistungsname.getCellData(i), tabc_erlaeuterung.getCellData(i));
-    		System.out.println(leistung.getLeistungsname().get()+ leistung.getErlauterung().get() + " _____DEBUG!");
     		updLeistungen.add(leistung);
     		i++;
 		}
     	try {
 			String xml = XMLParser.setXML(updLeistungen);
-//			System.out.println(xml);
+
 			IBehandlungpflegenFactory factory = new BehandlungpflegenFactory();
 			factory.getBehandlungPflegen().behandlungsdatenSpeichern(
 					Integer.parseInt(t_behandlungsID.getText()),
@@ -201,13 +200,13 @@ public class BehandlungsfallPflegenController{
 					t_patientName.getText(),
 					t_behandlungsart.getText()
 			);
-			//Für Debug-Zwecke
-			System.out.println(Integer.parseInt(t_behandlungsID.getText()) + 
-					t_datum.getText() +
-					xml +
-					t_arzt.getText() +
-					t_patientName.getText() +
-					t_behandlungsart.getText() + "Übertragen in Factory");
+
+			System.out.println("Speicherung erfolgreich!");
+			
+			Alert alert = new Alert(AlertType.INFORMATION, "", ButtonType.OK);
+	    	alert.setTitle("");
+	    	alert.setHeaderText("Speicherung erfolgreich!");
+	    	alert.showAndWait();
 		} catch (ParserConfigurationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

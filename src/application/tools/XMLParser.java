@@ -104,7 +104,7 @@ public class XMLParser {
         transf.transform(new DOMSource (doc), new StreamResult (writer));
         String s = writer.getBuffer().toString();
         
-        System.out.println(s);
+
         return s;
 		
 	}
