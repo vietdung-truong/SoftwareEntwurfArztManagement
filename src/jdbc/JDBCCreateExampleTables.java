@@ -68,7 +68,7 @@ public class JDBCCreateExampleTables {
 					"	<Leistung Leistungsname=\"Leistung 1\" Erläuterung=\"Test Erläuterung 1\" />\r\n" +  
 					"	<Leistung Leistungsname=\"Leistung 2\" Erläuterung=\"Test Erläuterung 2\" />\r\n" +
 					"	<Leistung Leistungsname=\"Leistung 3\" Erläuterung=\"Test Erläuterung 3\" />\r\n" +  
-					"</Leistungen>', 'privat')"
+					"</Leistungen>', 'privat'),"
 					+ "( 'Tomas Vaclavsky', 'Raphael Palombo',to_date ('2019-01-01', 'yyyy-mm-dd'), "
 					+ "'<Leistungen>\r\n" +  
 					"	<Leistung Leistungsname=\"Leistung 1\" Erläuterung=\"Test Erläuterung 1\" />\r\n" +  
