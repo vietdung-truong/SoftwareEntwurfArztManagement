@@ -101,11 +101,14 @@ public class BehandlungsfallSuchenController {
 	public void auswaehlen(Behandlungsuche_Behandlungsdaten clickedRow) {
 		int j = 0; 
 		
-		while (j < behandlungsdaten.size()) {
-			Behandlungsuche_Behandlungsdaten b = behandlungsdaten.iterator().next();
+		for (Behandlungsuche_Behandlungsdaten b : behandlungsdaten) {
+
+			System.out.println(b + "test b 1");
+
+			System.out.println(behandlungsdaten.size());
 			if (clickedRow.behandlungsIDProperty().get() == b.behandlungsIDProperty().get()) {
 				screencontroller.behandlungTOFuerPflegen = b;
-				System.out.println(b);
+				System.out.println(b + "test b 2");
 				
 				j = behandlungsdaten.size();
 			}
