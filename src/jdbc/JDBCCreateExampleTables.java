@@ -7,7 +7,7 @@ public class JDBCCreateExampleTables {
 	static final String JDBC_DRIVER = "org.h2.Driver";
 	static String Database = null;
 	static String DB_URL = "jdbc:h2:~/softwareEntwurfTest";
-	static final String Username = "as";
+	static final String Username = "sa";
 	static final String Password = "";
 	
 	//Testing water
@@ -34,7 +34,7 @@ public class JDBCCreateExampleTables {
 			
 			
 			  //Hier wird die Tabelle erstellt
-			
+			System.out.println("Die Alte Tabelle wird gelöscht");
 			String sql = "drop table behandlung";
 			stmt.executeUpdate(sql);
 			  
@@ -47,18 +47,40 @@ public class JDBCCreateExampleTables {
 			  
 			  //Hier werden Beispiele hinzugefuegt
 			 
-			System.out.println("Es werden 3 Beispiele hinzugefuegt...");
+			System.out.println("Es werden Beispiele hinzugefuegt...");
 			
 			sql = "insert into behandlung ( arzt , patient , datum , leistungen , behandlungsart )"
 					+ "values "
 					+ "( 'Margaret Neuenhofer', 'Viet Dung Truong', to_date ('2019-01-01', 'yyyy-mm-dd'), "
 					+ "'<Leistungen>\r\n" + 
-					"  <Leistung Leistungsname=\"Heilung 1\" Erläuterung=\"Test Heilung 1\" />\r\n" + 
-					"  <Leistung Leistungsname=\"Heilung 2\" Erläuterung=\"Test Heilung 2\" />\r\n" + 
-					"  <Leistung Leistungsname=\"Heilung 3\" Erläuterung=\"Test Heilung 3\" />\r\n" + 
-					"</Leistungen>', 'Heilung'),"
-					+ "( 'Max  Mustermann', 'Sven Zielonka',to_date ('2019-01-02', 'yyyy-mm-dd'), 'Jaehrliche Kontrolle', 'Kontrolle'),"
-					+ "( 'John  Doe', 'Raphael Palombo',to_date ('2019-01-03', 'yyyy-mm-dd'), 'Erkaeltung', 'Heilung')";
+					"  <Leistung Leistungsname=\"Leistung 1\" Erläuterung=\"Test Erläuterung 1\" />\r\n" + 
+					"  <Leistung Leistungsname=\"Leistung 2\" Erläuterung=\"Test Erläuterung 2\" />\r\n" + 
+					"  <Leistung Leistungsname=\"Leistung 3\" Erläuterung=\"Test Erläuterung 3\" />\r\n" + 
+					"</Leistungen>', 'privat'),"
+					+ "( 'Max  Mustermann', 'Sven Zielonka',to_date ('2019-01-02', 'yyyy-mm-dd'), "
+					+ "'<Leistungen>\r\n" + 
+					"	<Leistung Leistungsname=\"Leistung 1\" Erläuterung=\"Test Erläuterung 1\" />\r\n" +  
+					"	<Leistung Leistungsname=\"Leistung 2\" Erläuterung=\"Test Erläuterung 2\" />\r\n" +  
+					"	<Leistung Leistungsname=\"Leistung 3\" Erläuterung=\"Test Erläuterung 3\" />\r\n" +  
+					"</Leistungen>', 'kasse'),"
+					+ "( 'John  Doe', 'Raphael Palombo',to_date ('2019-01-03', 'yyyy-mm-dd'), "
+					+ "'<Leistungen>\r\n" +  
+					"	<Leistung Leistungsname=\"Leistung 1\" Erläuterung=\"Test Erläuterung 1\" />\r\n" +  
+					"	<Leistung Leistungsname=\"Leistung 2\" Erläuterung=\"Test Erläuterung 2\" />\r\n" +
+					"	<Leistung Leistungsname=\"Leistung 3\" Erläuterung=\"Test Erläuterung 3\" />\r\n" +  
+					"</Leistungen>', 'privat')"
+					+ "( 'Tomas Vaclavsky', 'Raphael Palombo',to_date ('2019-01-01', 'yyyy-mm-dd'), "
+					+ "'<Leistungen>\r\n" +  
+					"	<Leistung Leistungsname=\"Leistung 1\" Erläuterung=\"Test Erläuterung 1\" />\r\n" +  
+					"	<Leistung Leistungsname=\"Leistung 2\" Erläuterung=\"Test Erläuterung 2\" />\r\n" +
+					"	<Leistung Leistungsname=\"Leistung 3\" Erläuterung=\"Test Erläuterung 3\" />\r\n" +  
+					"</Leistungen>', 'privat'),"
+					+ "( 'Random Doc', 'Random Gal',to_date ('2019-01-01', 'yyyy-mm-dd'), "
+					+ "'<Leistungen>\r\n" +  
+					"	<Leistung Leistungsname=\"Leistung 1\" Erläuterung=\"Test Erläuterung 1\" />\r\n" +  
+					"	<Leistung Leistungsname=\"Leistung 2\" Erläuterung=\"Test Erläuterung 2\" />\r\n" +
+					"	<Leistung Leistungsname=\"Leistung 3\" Erläuterung=\"Test Erläuterung 3\" />\r\n" +  
+					"</Leistungen>', 'privat')";
 			stmt.executeUpdate(sql);
 			
 			System.out.println("Beispiele David, Sven und Raphael hinzugefuegt.");

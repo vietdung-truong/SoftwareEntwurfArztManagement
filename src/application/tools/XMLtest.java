@@ -22,7 +22,7 @@ public class XMLtest {
 					"</Leistungen>";
 			XMLParser parse = new XMLParser();
 			ObservableList<Leistung> leistungen =parse.getXML(xml); 
-			System.out.println(leistungen.iterator().next().getErlauterung() + leistungen.iterator().next().getLeistungsname() );
+//			System.out.println(leistungen.iterator().next().getErlauterung() + leistungen.iterator().next().getLeistungsname() );
 			String s = parse.setXML(leistungen);
 			System.out.println(s);
 			
